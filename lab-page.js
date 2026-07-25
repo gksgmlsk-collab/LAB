@@ -64,7 +64,7 @@
     .map((id) => projects.find((project) => project.id === id))
     .filter(Boolean)
     .map((project) => `
-      <section class="lab-feature-card" aria-label="${escapeHtml(project.name)} 대표 서비스">
+      <section class="lab-feature-card${project.id === "draconis" ? " is-primary" : ""}" data-project-id="${escapeHtml(project.id)}" aria-label="${escapeHtml(project.name)} 대표 서비스">
         ${mediaMarkup(project)}
         <div class="lab-feature-body">
           <div class="lab-card-head">
@@ -100,7 +100,8 @@
           ${stageBadge(project.stage)}
         </div>
         <h3>${escapeHtml(project.name)}</h3>
-        <p>${escapeHtml(project.summary)}</p>
+        <p>${formatEmphasis(project.summary)}</p>
+        ${project.accessNote ? `<div class="lab-access-note">${escapeHtml(project.accessNote)}</div>` : ""}
         <div class="lab-owner">담당 ${escapeHtml(project.owner)}</div>
         <div class="lab-link-row">
           ${project.url

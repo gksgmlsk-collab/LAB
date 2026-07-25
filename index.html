@@ -260,6 +260,28 @@
   @media (min-width:520px){
     .wrap{max-width:500px}
   }
+  @media (min-width:820px){
+    .wrap{max-width:1120px;padding:0 32px 72px}
+    .doc-top{padding:20px 0 14px;font-size:13px}
+    header{padding:38px 0 10px}
+    h1{font-size:32px}
+    .sub{font-size:15px}
+    main > section:first-child .list{
+      display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;
+    }
+    a.card{
+      min-height:250px;padding:24px;display:flex;flex-direction:column;
+    }
+    .ribbon{align-self:flex-start}
+    .card h2{font-size:22px}
+    .card .desc{font-size:14.5px}
+    .card .go{margin-top:auto;padding-top:18px}
+    .lab-entry-section{margin-top:50px;padding-top:30px}
+    .lab-entry-section > h2{font-size:25px}
+    .lab-entry-section .list{display:block;margin-top:20px}
+    .lab-entry-section a.card{min-height:210px}
+    footer{margin-top:48px}
+  }
   @media (prefers-reduced-motion:no-preference){
     .lab-section{animation:fadeUp .45s ease both}
     @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}

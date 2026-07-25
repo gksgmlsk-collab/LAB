@@ -136,7 +136,7 @@ window.labData = {
     { name: "지속 개선", body: "현장 사용 결과를 반영해 반복적으로 수정하는 단계" },
     { name: "보류", body: "우선순위 또는 운영 여건을 검토하는 단계" }
   ],
-  filters: ["전체", "학습앱", "행정앱", "홍보·운영", "개인 실험"],
+  filters: ["전체", "학습앱", "행정앱", "개인 실험"],
   projects: [
     {
       id: "draconis",
@@ -144,10 +144,10 @@ window.labData = {
       category: "학습앱",
       stage: "학교 적용",
       owner: "조미진",
-      summary: "학교의 학습 활동을 지원하기 위해 개발한 디지털 학습 지원 서비스입니다.",
-      reportPoint: "교사의 교육적 설계를 실제 학생용 디지털 경험으로 구현하는 학습 지원 사례",
-      detailTitle: "공부가 모험이 되는 순간, 드래곤과 함께 성장하는 학습 RPG **드라코니스**.",
-      detailBody: "**드라코니스는 석암초 학생들을 위한 학습·학교생활 통합 지원 플랫폼입니다.**\n국어·영어·수학 미션을 해결하며 나만의 드래곤을 성장시키고, 복습·과제·자율학습에도 즐겁게 참여할 수 있습니다. 정답의 개수보다 **끝까지 다시 도전하며 성장하는 과정**을 중요하게 생각합니다.",
+      summary: "학생은 드래곤을 성장시키며 학습하고, 교사는 학생별 오개념과 학습 경로를 파악하는 게임형 개인 맞춤 교수·학습 지원 시스템입니다.",
+      reportPoint: "학생의 게임형 학습 경험과 교사의 개념별 맞춤 지도를 연결하는 교수·학습 지원 시스템",
+      detailTitle: "드라코니스(Draconis)",
+      detailBody: "드라코니스는 학생이 나만의 드래곤을 성장시키며 즐겁게 학습하고, 교사는 학생별 오개념과 학습 경로를 파악하여 맞춤형 지도를 제공하는 게임형 개인 맞춤 교수·학습 지원 시스템입니다.\n\n2022 개정 교육과정의 개념을 원자 단위로 세분화하고, 개념 간 관계를 네트워크로 분석하여 문제를 자동 구성합니다. 또한 지식추적(KT) 모델을 활용해 학생의 개념별 숙달도와 오개념을 지속적으로 추적합니다.\n\n수학은 기초 연산부터 도형·문장제·창의적 심화 문제까지 저작권에서 자유로운 문제를 지속적으로 제공하며, 국어는 한자어·맞춤법 등 4000여개의 어휘로 구성된 어휘 던전과 난이도별 읽기 자료 500편, 총 4,000문항을 제공합니다. 영어는 알파벳과 파닉스부터 기초 회화까지 단계적으로 학습할 수 있습니다.\n\n학습뿐 아니라 운동, 석암히어로 봉사활동 등 학생의 전인적 성장을 함께 지원하며, 향후 사회·과학 영역의 시뮬레이션형 학습 시스템으로 확장될 예정입니다.",
       actions: [
         { label: "서비스 체험", url: "https://draconis.up.railway.app/" }
       ],
@@ -265,6 +265,43 @@ window.labData = {
       featured: true
     },
     {
+      id: "michuhol-city-development",
+      name: "미추홀구 도시개발 앱",
+      category: "학습앱",
+      stage: "학교 적용",
+      owner: "조미진",
+      summary: "미추홀구 도시개발 앱은 국어의 설명하는 글쓰기, 사회의 인구 변화와 도시 문제, 수학의 면적 개념을 연계한 교과 통합 프로젝트입니다. 제8회 교육공공데이터 AI활용공모전 대상 수상작 **「반경 너머, 도달가능성으로」**의 녹지 접근성 분석을 바탕으로, 학생들이 미추홀구의 도시 불균형 문제를 직접 발견하고 해결 방안을 설계하도록 구성했습니다. 문제 탐색부터 도시 설계, 산출물 정리, 나만의 도시계획 발표까지 전 과정을 인터랙티브 앱으로 경험할 수 있습니다.",
+      accessNote: "앱에서 5학년 1반 교사계정(인증코드 26014351)으로 입장",
+      reportPoint: "국어·사회·수학을 지역 도시 문제 해결과 연결한 교과 통합 프로젝트",
+      detailTitle: "지역의 도시 불균형을 발견하고 해결하는 교과 통합 프로젝트",
+      detailBody: "학생이 미추홀구의 도시 문제를 탐색하고 도시를 설계한 뒤 결과를 발표하는 전 과정을 인터랙티브 앱으로 경험합니다.",
+      actions: [
+        { label: "서비스 체험", url: "https://projectfor5city-production.up.railway.app/" }
+      ],
+      url: "https://projectfor5city-production.up.railway.app/",
+      image: null,
+      video: null,
+      featured: false
+    },
+    {
+      id: "class-live-interpreter",
+      name: "실시간 통역앱",
+      category: "학습앱",
+      stage: "지속 개선",
+      owner: "박동훈 · 조미진",
+      summary: "교육과정 기반 실시간 통역 앱은 한국어가 어려운 다문화 학생의 수업 참여를 지원하는 맞춤형 학습 통역 시스템입니다. 2022 개정 교육과정을 바탕으로 일상어와 의미가 다른 교과 개념어와 학습 용어를 정확하고 정밀하게 통역하며, 수업 내용을 교육과정 구조에 맞게 자동 정리하여 복습 자료로 제공합니다. 수업과 관련 없는 대화는 걸러내고 핵심 학습 내용만 요약함으로써 학생의 이해를 높이는 동시에 교사의 설명·정리 부담을 줄입니다.",
+      reportPoint: "다문화 학생의 수업 참여와 교사의 설명·정리 부담을 함께 지원하는 교육과정 기반 통역 시스템",
+      detailTitle: "교육과정의 개념어를 정확히 전달하는 실시간 학습 통역",
+      detailBody: "다문화 학생에게 교과 개념어와 핵심 학습 내용을 정확하게 통역하고, 수업 내용을 교육과정 구조에 맞춘 복습 자료로 제공합니다.",
+      actions: [
+        { label: "서비스 체험", url: "https://classtalk-live-interpreter-production.up.railway.app/" }
+      ],
+      url: "https://classtalk-live-interpreter-production.up.railway.app/",
+      image: null,
+      video: null,
+      featured: false
+    },
+    {
       id: "rock-sports",
       name: "체육환경부 서비스",
       category: "개인 실험",
@@ -278,42 +315,6 @@ window.labData = {
         { label: "서비스 체험", url: "https://rock-sports-production.up.railway.app/" }
       ],
       url: "https://rock-sports-production.up.railway.app/",
-      image: null,
-      video: null,
-      featured: false
-    },
-    {
-      id: "youtube",
-      name: "돌 AI 연구소 유튜브",
-      category: "홍보·운영",
-      stage: "학교 적용",
-      owner: "한희나",
-      summary: "연구소 프로젝트, 개발 과정과 활용 사례를 영상으로 기록하고 공유합니다.",
-      reportPoint: "결과뿐 아니라 과정과 현장 활용을 공개하는 성과 확산 채널",
-      detailTitle: "개발 과정과 활용 사례를 영상으로 기록",
-      detailBody: "연구소의 프로젝트 이야기, 서비스 시연, 제작 과정을 영상으로 공유하는 운영 채널입니다.",
-      actions: [
-        { label: "채널 열기", url: "https://youtube.com/@teacher_rockai?si=Y5j-EmPLMpNfCFS9" }
-      ],
-      url: "https://youtube.com/@teacher_rockai?si=Y5j-EmPLMpNfCFS9",
-      image: null,
-      video: null,
-      featured: false
-    },
-    {
-      id: "instagram",
-      name: "돌 AI 연구소 인스타그램",
-      category: "홍보·운영",
-      stage: "학교 적용",
-      owner: "한희나",
-      summary: "연구소의 프로젝트와 활동 기록을 짧고 직관적인 콘텐츠로 공유합니다.",
-      reportPoint: "학교 AI 실천 사례를 대중이 이해하기 쉬운 방식으로 확산하는 채널",
-      detailTitle: "짧고 직관적인 활동 기록",
-      detailBody: "프로젝트와 현장 활동을 대중이 이해하기 쉬운 방식으로 정리해 공유하는 운영 채널입니다.",
-      actions: [
-        { label: "채널 열기", url: "https://www.instagram.com/rockai1004/" }
-      ],
-      url: "https://www.instagram.com/rockai1004/",
       image: null,
       video: null,
       featured: false
@@ -412,6 +413,10 @@ window.labData = {
       {
         title: "확산 가능한 모델",
         body: "학교 규모와 환경이 달라도 참고할 수 있도록 개발 과정, 운영 기준과 활용 사례를 표준화해 기록합니다."
+      },
+      {
+        title: "홍보 채널 운영",
+        body: "연구소의 프로젝트와 현장 적용 사례가 충분히 축적되면 유튜브와 인스타그램을 홍보·기록 채널로 운영합니다."
       }
     ],
     closing: [
