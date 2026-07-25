@@ -310,11 +310,33 @@
     </div>
   `;
 
-  byId("lab-org-list").innerHTML = data.organization.groups
-    .map((group) => `
-      <div class="lab-org-card">
-        <div class="role">${escapeHtml(group.role)}</div>
-        <div class="names">${escapeHtml(group.names)}</div>
+  byId("lab-org-list").innerHTML = `
+    <section class="lab-org-block" aria-labelledby="lab-people-title">
+      <h3 id="lab-people-title" class="lab-org-kicker">PEOPLE</h3>
+      <div class="lab-people-list">
+        ${data.organization.groups.map((group) => `
+          <div class="lab-person-row${group.highlightName ? " is-highlighted" : ""}">
+            <div class="role">${escapeHtml(group.role)}</div>
+            <div class="names">
+              ${group.names.split(" · ").map((name) => (
+                `<span${name === group.highlightName ? ' class="person-highlight"' : ""}>${escapeHtml(name)}</span>`
+              )).join('<span class="person-separator" aria-hidden="true"> · </span>')}
+            </div>
+          </div>
+        `).join("")}
       </div>
-    `).join("");
+    </section>
+    <section class="lab-org-block" aria-labelledby="lab-projects-title">
+      <h3 id="lab-projects-title" class="lab-org-kicker">PROJECTS</h3>
+      <div class="lab-department-grid">
+        ${data.organization.departments.map((department) => `
+          <article class="lab-department-card tone-${escapeHtml(department.tone)}">
+            <h4>${escapeHtml(department.title)}</h4>
+            <div class="lab-department-lead">팀장: ${escapeHtml(department.lead)}</div>
+            <p>${escapeHtml(department.body)}</p>
+          </article>
+        `).join("")}
+      </div>
+    </section>
+  `;
 })();

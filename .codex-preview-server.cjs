@@ -3,11 +3,11 @@ const fs = require("node:fs");
 const path = require("node:path");
 
 const root = __dirname;
-const port = 8000;
+const port = Number(process.env.PORT || 8000);
 const routeFiles = {
   "/": "index.html",
-  "/bangyeong.html": "반경너머 교육감보고용 모바일.html",
-  "/dolsoe.html": "돌쇠 교육감보고용 모바일.html",
+  "/bangyeong.html": "bangyeong.html",
+  "/dolsoe.html": "dolsoe.html",
 };
 const contentTypes = {
   ".html": "text/html; charset=utf-8",
