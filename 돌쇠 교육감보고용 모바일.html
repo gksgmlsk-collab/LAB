@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>제2회 법령데이터 활용 아이디어 공모전 전국 최우수상 수상 보고 — 인천석암초</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600;700&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1B2A33;
+    --navy:#20344A;
+    --steel:#3E5B73;
+    --gold:#9A7B33;
+    --paper:#FBFAF7;
+    --panel:#FFFFFF;
+    --soft:#EEF2F5;
+    --line:#D5DDE3;
+    --sub:#5D6E79;
+    --seal:#8C3A2B;   /* 돌쇠 낙관/도장 톤 */
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    font-family:'IBM Plex Sans KR',-apple-system,sans-serif;
+    background:var(--paper);color:var(--ink);
+    line-height:1.6;font-size:15.5px;
+  }
+  .wrap{max-width:460px;margin:0 auto;padding:0 18px 52px}
+
+  .doc-top{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:16px 0 12px;border-bottom:2px solid var(--navy);
+    font-size:12px;color:var(--sub);letter-spacing:.02em;
+  }
+  .doc-top .cls{color:var(--navy);font-weight:700}
+
+  header{padding:22px 0 6px}
+  .back-link{
+    display:inline-flex;align-items:center;min-height:44px;margin-bottom:12px;
+    color:var(--steel);font-size:13px;font-weight:700;text-decoration:none;
+  }
+  .back-link:focus-visible{outline:2px solid var(--steel);outline-offset:2px}
+  .ribbon{
+    display:inline-block;font-size:12px;font-weight:700;letter-spacing:.03em;
+    color:var(--gold);border:1px solid var(--gold);border-radius:4px;
+    padding:4px 10px;margin-bottom:14px;
+  }
+  h1{
+    font-family:'Noto Serif KR',serif;font-weight:700;font-size:25px;
+    line-height:1.42;color:var(--navy);word-break:keep-all;
+  }
+  h1 .seal{color:var(--seal)}
+  .sub{font-size:14px;color:var(--sub);margin-top:8px;word-break:keep-all}
+
+  .meta{
+    margin-top:18px;border:1px solid var(--line);border-radius:8px;
+    overflow:hidden;font-size:13.5px;
+  }
+  .meta div{display:flex;border-bottom:1px solid var(--line)}
+  .meta div:last-child{border-bottom:0}
+  .meta .k{
+    flex:0 0 92px;background:var(--soft);color:var(--navy);font-weight:600;
+    padding:9px 12px;border-right:1px solid var(--line);
+  }
+  .meta .v{padding:9px 12px;color:var(--ink)}
+
+  .core{
+    margin-top:20px;background:var(--navy);color:#EAF0F4;
+    border-radius:10px;padding:20px 18px;
+  }
+  .core .lbl{font-size:12px;font-weight:700;letter-spacing:.14em;color:#A9C2D6;margin-bottom:14px}
+  .core p{
+    color:#EAF0F4;font-size:15px;line-height:1.72;word-break:keep-all;
+    padding-left:22px;position:relative;
+  }
+  .core p + p{
+    margin-top:14px;padding-top:14px;
+    border-top:1px solid rgba(255,255,255,.12);
+  }
+  .core p::before{
+    content:"❖";color:var(--gold);position:absolute;left:0;top:0;
+  }
+  .core b{color:#FFF;font-weight:700}
+  .core .hl{color:#F0D48A;font-weight:700}
+
+  .badge-first{
+    margin-top:14px;background:#F6EEE9;border:1px solid #E1C9BF;
+    border-radius:9px;padding:12px 14px;font-size:13.5px;color:#6E2E22;
+    word-break:keep-all;display:flex;gap:9px;align-items:flex-start;
+  }
+  .badge-first .mk{color:var(--seal);font-weight:700;flex:0 0 auto}
+  .badge-first b{color:var(--seal)}
+
+  section{margin-top:30px}
+  h2{
+    font-family:'Noto Serif KR',serif;font-size:18px;font-weight:700;
+    color:var(--navy);padding-bottom:9px;margin-bottom:14px;
+    border-bottom:1px solid var(--line);word-break:keep-all;
+  }
+  h2 .no{color:var(--gold);margin-right:8px}
+
+  p.body{color:#293842;word-break:keep-all}
+  p.body + p.body{margin-top:9px}
+  .body b{color:var(--navy)}
+
+  .kpis{display:flex;gap:10px;margin:6px 0 4px}
+  .kpi{
+    flex:1;background:var(--panel);border:1px solid var(--line);
+    border-radius:9px;padding:14px 8px;text-align:center;
+  }
+  .kpi .n{font-family:'Noto Serif KR',serif;font-size:23px;font-weight:700;color:var(--steel);line-height:1.1}
+  .kpi .n small{font-size:13px}
+  .kpi .l{font-size:11.5px;color:var(--sub);margin-top:5px;word-break:keep-all;line-height:1.4}
+
+  /* 작동 흐름 5단계 */
+  .flow{margin-top:6px}
+  .fstep{
+    display:flex;gap:12px;padding:11px 12px;background:var(--panel);
+    border:1px solid var(--line);border-radius:9px;margin-bottom:8px;align-items:flex-start;
+  }
+  .fstep .fn{
+    flex:0 0 26px;height:26px;border-radius:50%;background:var(--navy);color:#fff;
+    font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;
+  }
+  .fstep .fx{font-size:13.8px;color:#293842;word-break:keep-all}
+  .fstep .fx b{color:var(--navy)}
+
+  .studies{border:1px solid var(--line);border-radius:9px;overflow:hidden;margin-top:4px}
+  .srow{display:flex;gap:12px;padding:13px 14px;border-bottom:1px solid var(--line);align-items:flex-start}
+  .srow:last-child{border-bottom:0}
+  .srow:nth-child(even){background:#F7F9FA}
+  .srow .tag{flex:0 0 84px;font-size:12px;font-weight:700;color:var(--steel);padding-top:1px}
+  .srow .txt{font-size:13.5px;color:#293842;word-break:keep-all}
+
+  ul.gov{list-style:none;margin-top:2px}
+  ul.gov li{
+    position:relative;padding:8px 0 8px 20px;font-size:14.5px;
+    color:#293842;word-break:keep-all;border-bottom:1px dashed var(--line);
+  }
+  ul.gov li:last-child{border-bottom:0}
+  ul.gov li::before{content:"◦";position:absolute;left:2px;color:var(--steel)}
+  ul.gov li b{color:var(--navy)}
+  .steps li .when{display:inline-block;min-width:66px;font-weight:700;color:var(--gold)}
+
+  footer{
+    margin-top:34px;padding-top:14px;border-top:2px solid var(--navy);
+    font-size:11.5px;color:var(--sub);word-break:keep-all;line-height:1.55;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="doc-top">
+    <span>인천석암초등학교</span>
+    <span class="cls">교육감 보고용</span>
+  </div>
+
+  <header>
+    <a class="back-link" href="/" aria-label="수상 보고 목록으로 돌아가기">← 수상 보고 목록</a><br>
+    <span class="ribbon">제품·서비스 개발 부문 · 전국 최우수상(법제처장상)</span>
+    <h1>법제처 제2회 법령데이터 활용<br>아이디어 공모전 <span class="seal">수상 보고</span></h1>
+    <p class="sub">교장이 직접 개발한 AI 학교 사업계획 법령 검토 비서 「돌쇠」</p>
+  </header>
+
+  <div class="meta">
+    <div><span class="k">보고일</span><span class="v">2026. 7. 27.</span></div>
+    <div><span class="k">보고기관</span><span class="v">인천석암초등학교 (교장 박동훈)</span></div>
+    <div><span class="k">출품</span><span class="v">개인 자격 참가</span></div>
+    <div><span class="k">관련부서</span><span class="v">융합인재교육과</span></div>
+  </div>
+
+  <div class="core">
+    <div class="lbl">핵심 보고사항</div>
+    <p>본교 교장(박동훈)이 직접 개발한 AI 법령 검토 비서 <b>「돌쇠」</b>가 법제처 주최 공모전 제품·서비스 개발 부문에서 <span class="hl">전국 최우수상(법제처장상)</span>을 수상하였습니다.</p>
+    <p>법령데이터와 생성형 AI를 결합해 <b>법률 전문가 없이도 학교 사업계획의 법령 준수 여부를 자동 검토</b>하는 모델로, 인천교육 대표 우수사례로 확산 가능합니다.</p>
+  </div>
+
+  <div class="badge-first">
+    <span class="mk">최초</span>
+    <span><b>현직 학교장이 출품하여 최우수상을 수상한 것은 이번이 처음</b>이며, 수상작은 제14회 범정부 창업경진대회 통합본선에도 추천되었습니다.</span>
+  </div>
+
+  <section>
+    <h2><span class="no">1</span>개발 배경</h2>
+    <p class="body">국·공립 초등학교는 학교폭력 예방·안전교육·학교보건·급식·개인정보 보호 등 <b>연간 수십 건의 사업계획</b>을 수립하며, 각 계획은 관련 법령의 의무사항을 반드시 반영해야 합니다.</p>
+    <p class="body">그러나 학교에는 법령 전문 인력이 없어 요건 누락이 잦고, 법령 개정도 개별적으로 추적해야 하는 부담이 있습니다. 교장이 이 현장 문제를 직접 겪고 해결하고자 개발한 <b>실증형 솔루션</b>입니다.</p>
+  </section>
+
+  <section>
+    <h2><span class="no">2</span>작동 방식</h2>
+    <div class="flow">
+      <div class="fstep"><span class="fn">1</span><span class="fx">학교 사업계획서(한글·PDF 등)를 <b>파일로 올리면</b></span></div>
+      <div class="fstep"><span class="fn">2</span><span class="fx">AI가 문서를 읽고 <b>관련 법령 분야를 자동으로 분류</b></span></div>
+      <div class="fstep"><span class="fn">3</span><span class="fx">법령정보(law.go.kr)에서 <b>지켜야 할 의무 조항을 찾아</b></span></div>
+      <div class="fstep"><span class="fn">4</span><span class="fx">계획 내용과 비교해 <b>준수·누락·위반을 판정</b></span></div>
+      <div class="fstep"><span class="fn">5</span><span class="fx">항목별 결과·근거 법령·수정 권고가 담긴 <b>검토 보고서 제공</b></span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="no">3</span>규모와 특징</h2>
+    <div class="kpis">
+      <div class="kpi"><div class="n">약 400<small>개</small></div><div class="l">검토 대상<br>초등학교 관련 법령</div></div>
+      <div class="kpi"><div class="n">10<small>개</small></div><div class="l">분야별 체계화<br>(국가·교육청 법령)</div></div>
+      <div class="kpi"><div class="n">6→1<small>위</small></div><div class="l">전국 본선<br>최종 1위</div></div>
+    </div>
+    <p class="body" style="margin-top:12px">법제처 현행법령 자료와 <b>인천광역시교육청 법무도우미(law.ice.go.kr)</b> 자료를 함께 활용하여, 국가 법령뿐 아니라 <b>인천 지역 규정까지</b> 반영해 검토합니다.</p>
+  </section>
+
+  <section>
+    <h2><span class="no">4</span>기대 효과</h2>
+    <div class="studies">
+      <div class="srow"><span class="tag">감사 대응</span><span class="txt">결재 전 법령 위반 소지를 미리 걸러내어, 감사·장학 지적사항과 시정조치 부담을 사전 예방</span></div>
+      <div class="srow"><span class="tag">업무 경감</span><span class="txt">매년 수기로 반복하던 법령 검토를 자동화하여 교직원의 교육 업무 집중 시간 확보</span></div>
+      <div class="srow"><span class="tag">개정 반영</span><span class="txt">법령이 바뀌어도 최신 자료를 자동 연동, 담당자가 개별 추적할 필요 없음</span></div>
+      <div class="srow"><span class="tag">근거 보존</span><span class="txt">검토 결과가 문서로 남아, 법령 준수 검토 이력을 즉시 제출·입증 가능</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="no">5</span>부서 검토 의견</h2>
+    <ul class="gov">
+      <li>인천 관내 학교 확산 시 <b>사업계획 법령 검토 부담 경감 및 적극행정 사례</b> 도출 기대</li>
+      <li>교육청 차원의 <b>읽걷쓰AI 우수사례 홍보 및 운영 지원</b> 검토 필요</li>
+      <li>교육청 <b>AI 교육비서 기능 고도화를 위한 병합 검토</b> 필요</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="no">6</span>향후 계획</h2>
+    <ul class="gov steps">
+      <li><span class="when">8. 6.</span> 시상식 참석 및 수상 결과 대외 공유</li>
+      <li><span class="when">8월</span> 교직원·학부모 공유, 본교 전 사업계획 검토에 전면 적용</li>
+      <li><span class="when">2학기</span> 관내 희망학교 시범 운영 협의, 교육청 법무도우미 연계 고도화</li>
+      <li><span class="when">하반기</span> 관내 확산 방안 수립 후 별도 보고 예정</li>
+    </ul>
+  </section>
+
+  <footer>
+    「제2회 법령데이터 활용 아이디어 공모전」 법제처 주최 · 활용 데이터 law.go.kr / law.ice.go.kr<br>
+    인천석암초등학교 돌AI연구소 — 교육행정 AI 규정준수 모델 「돌쇠」
+  </footer>
+
+</div>
+</body>
+</html>
