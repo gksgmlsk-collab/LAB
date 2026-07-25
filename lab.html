@@ -276,10 +276,15 @@
   .lab-page-nav + .lab-report{margin-top:0}
   .lab-intro-heading{margin-top:0}
   .lab-page-header{
-    position:relative;min-height:184px;padding-right:122px;
+    position:relative;min-height:0;padding-right:0;
   }
+  .lab-heading-lockup{
+    display:flex;align-items:center;gap:14px;
+  }
+  .lab-heading-copy{min-width:0}
+  .lab-heading-copy .sub{margin-top:6px}
   .lab-header-mascot{
-    position:absolute;right:0;top:50px;width:108px;height:132px;
+    position:static;flex:0 0 96px;width:96px;height:116px;
     overflow:visible;background:transparent;
   }
   .lab-header-mascot img{
@@ -293,10 +298,11 @@
   @media (min-width:820px){
     .wrap{max-width:1120px;padding:0 32px 76px}
     .doc-top{padding:20px 0 14px;font-size:13px}
-    .lab-page-header{min-height:208px;padding:34px 170px 16px 0}
+    .lab-page-header{min-height:0;padding:34px 0 16px}
     .lab-page-header h1{font-size:34px}
     .lab-page-header .sub{font-size:16px}
-    .lab-header-mascot{top:42px;right:8px;width:148px;height:174px}
+    .lab-heading-lockup{gap:24px}
+    .lab-header-mascot{flex-basis:146px;width:146px;height:166px}
     .lab-page-nav{gap:10px;margin:20px 0 48px}
     .lab-page-nav a{padding:9px 14px;font-size:13.5px}
     .lab-section{margin-top:56px}
@@ -348,10 +354,14 @@
 
   <header class="lab-page-header">
     <a class="back-link" href="/" aria-label="수상 보고 목록으로 돌아가기">← 수상 보고 목록</a>
-    <h1>돌 AI 연구소</h1>
-    <p class="sub">학교의 문제를, AI로 해결합니다.</p>
-    <div class="lab-header-mascot">
-      <img src="./assets/dol-ai-lab-logo-transparent.png" alt="돌 AI 연구소 로고">
+    <div class="lab-heading-lockup">
+      <div class="lab-header-mascot">
+        <img src="./assets/dolbot-header.png" alt="돌 AI 연구소 마스코트 돌봇">
+      </div>
+      <div class="lab-heading-copy">
+        <h1>돌 AI 연구소</h1>
+        <p class="sub">학교의 문제를, AI로 해결합니다.</p>
+      </div>
     </div>
   </header>
 
