@@ -11,7 +11,7 @@ window.labData = {
     organizationLead: "현장 전문성이 연결되는 협업 구조입니다.",
     servicesLead: [
       "돌 AI 연구소의 서비스는 학습, 학교 행정, 안전, 소통, 건강, 콘텐츠 공유 등 학교생활의 여러 영역을 다룹니다.",
-      "각 서비스는 아이디어, 데모, 내부 테스트, 학교 적용, 지속 개선 단계로 관리합니다."
+      "각 서비스는 아이디어, 데모, 내부 테스트, 학교 적용+지속 개선 단계로 관리합니다."
     ],
     safetyLead: "빠른 개발보다 중요한 것은 안전한 학교 적용입니다."
   },
@@ -131,9 +131,8 @@ window.labData = {
   stages: [
     { name: "아이디어", body: "해결 과제와 핵심 기능을 구상하는 단계" },
     { name: "데모", body: "핵심 기능을 체험할 수 있는 초기 구현 단계" },
-    { name: "내부 테스트", body: "제한된 사용자를 대상으로 검증하는 단계" },
-    { name: "학교 적용", body: "실제 학교 업무나 학습 상황에 적용하는 단계" },
-    { name: "지속 개선", body: "현장 사용 결과를 반영해 반복적으로 수정하는 단계" },
+    { name: "내부테스트", body: "제한된 사용자를 대상으로 검증하는 단계" },
+    { name: "학교 적용+지속 개선", body: "실제 학교에 적용하고 현장 사용 결과를 반영해 지속적으로 개선하는 단계" },
     { name: "보류", body: "우선순위 또는 운영 여건을 검토하는 단계" }
   ],
   filters: ["전체", "학습앱", "행정앱", "개인 실험"],
@@ -142,7 +141,7 @@ window.labData = {
       id: "draconis",
       name: "드라코니스",
       category: "학습앱",
-      stage: "학교 적용",
+      stage: "학교 적용+지속 개선",
       owner: "조미진",
       summary: "학생은 드래곤을 성장시키며 학습하고, 교사는 학생별 오개념과 학습 경로를 파악하는 게임형 개인 맞춤 교수·학습 지원 시스템입니다.",
       reportPoint: "학생의 게임형 학습 경험과 교사의 개념별 맞춤 지도를 연결하는 교수·학습 지원 시스템",
@@ -152,7 +151,8 @@ window.labData = {
         { label: "서비스 체험", url: "https://draconis.up.railway.app/" }
       ],
       url: "https://draconis.up.railway.app/",
-      image: null,
+      image: "./assets/draconis-card.jpeg",
+      imageDisplay: "portrait",
       video: null,
       featured: true
     },
@@ -160,9 +160,10 @@ window.labData = {
       id: "seokam-on",
       name: "석암 ON",
       category: "행정앱",
-      stage: "지속 개선",
+      stage: "학교 적용+지속 개선",
       owner: "이남건",
       summary: "분산된 학교 행정과 운영 기능을 한곳에서 확인하고 처리하도록 지원하는 통합 서비스입니다.",
+      accessNote: "교직원용 비밀번호: neis",
       reportPoint: "반복 업무와 정보 분산 문제를 학교 맞춤형 통합 플랫폼으로 개선하는 사례",
       detailTitle: "학교 업무를 한곳으로 연결하는 통합 운영 플랫폼",
       detailBody: "학교에서 반복적으로 발생하는 행정과 운영 업무를 개별 도구에 분산하지 않고 하나의 서비스 안에서 관리하는 것을 목표로 합니다. 현장의 요구에 따라 기능을 계속 추가하고 통합합니다.",
@@ -170,7 +171,8 @@ window.labData = {
         { label: "서비스 체험", url: "https://disciplined-happiness-production-ad86.up.railway.app/" }
       ],
       url: "https://disciplined-happiness-production-ad86.up.railway.app/",
-      image: null,
+      image: "./assets/seokam-on.png",
+      imageDisplay: "contain",
       video: null,
       featured: true
     },
@@ -178,7 +180,7 @@ window.labData = {
       id: "food-allergy",
       name: "석암 급식 알리미",
       category: "행정앱",
-      stage: "학교 적용",
+      stage: "학교 적용+지속 개선",
       owner: "박동훈",
       summary: "급식과 알레르기 정보를 사용자가 쉽게 확인하도록 지원하는 안내 서비스입니다.",
       reportPoint: "학생 건강과 학부모 정보 접근성을 지원하는 생활 밀착형 디지털 서비스",
@@ -196,7 +198,7 @@ window.labData = {
       id: "visitor-pass",
       name: "일일방문증",
       category: "행정앱",
-      stage: "지속 개선",
+      stage: "학교 적용+지속 개선",
       owner: "박동훈",
       summary: "학교 방문자의 신청과 일일 방문 절차를 체계적으로 지원하는 서비스입니다.",
       reportPoint: "학교 안전과 방문 절차의 편의성을 함께 고려한 현장형 서비스",
@@ -214,7 +216,7 @@ window.labData = {
       id: "press-release",
       name: "보도자료앱",
       category: "행정앱",
-      stage: "학교 적용",
+      stage: "학교 적용+지속 개선",
       owner: "박동훈",
       summary: "학교 활동을 보도자료 형식으로 작성하고 관리하도록 지원하는 서비스입니다.",
       reportPoint: "학교 성과 기록과 대외 소통 업무를 지원하는 AI 활용 사례",
@@ -232,7 +234,7 @@ window.labData = {
       id: "umbrella",
       name: "아차우산",
       category: "행정앱",
-      stage: "지속 개선",
+      stage: "내부테스트",
       owner: "박동훈",
       summary: "학교의 우산 관련 운영을 지원하기 위한 생활 밀착형 서비스입니다.",
       reportPoint: "작지만 반복되는 학교생활의 문제를 디지털 방식으로 해결한 사례",
@@ -260,7 +262,7 @@ window.labData = {
         { label: "데모 체험", url: "https://school-meditation-production.up.railway.app/" }
       ],
       url: "https://school-meditation-production.up.railway.app/",
-      image: null,
+      image: "./assets/dolflix-cover.png",
       video: null,
       featured: true
     },
@@ -268,9 +270,9 @@ window.labData = {
       id: "michuhol-city-development",
       name: "미추홀구 도시개발 앱",
       category: "학습앱",
-      stage: "학교 적용",
+      stage: "학교 적용+지속 개선",
       owner: "조미진",
-      summary: "미추홀구 도시개발 앱은 국어의 설명하는 글쓰기, 사회의 인구 변화와 도시 문제, 수학의 면적 개념을 연계한 교과 통합 프로젝트입니다. 제8회 교육공공데이터 AI활용공모전 대상 수상작 **「반경 너머, 도달가능성으로」**의 녹지 접근성 분석을 바탕으로, 학생들이 미추홀구의 도시 불균형 문제를 직접 발견하고 해결 방안을 설계하도록 구성했습니다. 문제 탐색부터 도시 설계, 산출물 정리, 나만의 도시계획 발표까지 전 과정을 인터랙티브 앱으로 경험할 수 있습니다.",
+      summary: "국어·사회·수학을 연계하여 미추홀구의 도시 문제를 탐구하는 교과 통합 프로젝트 앱입니다. 학생들은 실제 녹지 접근성 분석을 바탕으로 도시 불균형 문제를 발견하고, 해결 방안과 나만의 도시계획을 설계·발표합니다.",
       accessNote: "앱에서 5학년 1반 교사계정(인증코드 26014351)으로 입장",
       reportPoint: "국어·사회·수학을 지역 도시 문제 해결과 연결한 교과 통합 프로젝트",
       detailTitle: "지역의 도시 불균형을 발견하고 해결하는 교과 통합 프로젝트",
@@ -287,9 +289,9 @@ window.labData = {
       id: "class-live-interpreter",
       name: "실시간 통역앱",
       category: "학습앱",
-      stage: "지속 개선",
+      stage: "학교 적용+지속 개선",
       owner: "박동훈 · 조미진",
-      summary: "교육과정 기반 실시간 통역 앱은 한국어가 어려운 다문화 학생의 수업 참여를 지원하는 맞춤형 학습 통역 시스템입니다. 2022 개정 교육과정을 바탕으로 일상어와 의미가 다른 교과 개념어와 학습 용어를 정확하고 정밀하게 통역하며, 수업 내용을 교육과정 구조에 맞게 자동 정리하여 복습 자료로 제공합니다. 수업과 관련 없는 대화는 걸러내고 핵심 학습 내용만 요약함으로써 학생의 이해를 높이는 동시에 교사의 설명·정리 부담을 줄입니다.",
+      summary: "2022 개정 교육과정을 기반으로 다문화 학생에게 교과 개념어와 학습 내용을 정확하게 실시간 통역하는 앱입니다. 수업과 관련 없는 발언은 걸러내고 핵심 학습 내용만 구조화·요약하여 학생의 복습을 돕고 교사의 부담을 줄입니다.",
       reportPoint: "다문화 학생의 수업 참여와 교사의 설명·정리 부담을 함께 지원하는 교육과정 기반 통역 시스템",
       detailTitle: "교육과정의 개념어를 정확히 전달하는 실시간 학습 통역",
       detailBody: "다문화 학생에게 교과 개념어와 핵심 학습 내용을 정확하게 통역하고, 수업 내용을 교육과정 구조에 맞춘 복습 자료로 제공합니다.",
@@ -297,6 +299,24 @@ window.labData = {
         { label: "서비스 체험", url: "https://classtalk-live-interpreter-production.up.railway.app/" }
       ],
       url: "https://classtalk-live-interpreter-production.up.railway.app/",
+      image: null,
+      video: null,
+      featured: false
+    },
+    {
+      id: "rockam-padlet",
+      name: "교내전용 패들렛",
+      category: "학습앱",
+      stage: "학교 적용+지속 개선",
+      owner: "조미진",
+      summary: "별도 절차 없이 비인증 기반으로 사용할 수 있는 교내전용 패들렛입니다. 저장 모드 사용 시 학급 내 학생 글들이 자동으로 수집됩니다.\n\n향후 아이들의 글쓰기 활동 지원과 자동 문집 완성 등 다양한 기능으로 확대할 예정입니다.",
+      reportPoint: "학생 글을 자동으로 수집하고 글쓰기 활동과 문집 제작으로 확장하는 교내 협업 서비스",
+      detailTitle: "학생 글을 모으고 글쓰기 활동으로 확장하는 교내전용 패들렛",
+      detailBody: "비인증 기반으로 간편하게 사용하고 저장 모드에서 학급별 학생 글을 자동으로 수집합니다.",
+      actions: [
+        { label: "서비스 체험", url: "https://2026-rockam.up.railway.app" }
+      ],
+      url: "https://2026-rockam.up.railway.app",
       image: null,
       video: null,
       featured: false
@@ -416,7 +436,11 @@ window.labData = {
       },
       {
         title: "홍보 채널 운영",
-        body: "연구소의 프로젝트와 현장 적용 사례가 충분히 축적되면 유튜브와 인스타그램을 홍보·기록 채널로 운영합니다."
+        body: "연구소의 프로젝트와 현장 적용 사례가 충분히 축적되면 유튜브와 인스타그램을 홍보·기록 채널로 운영합니다.",
+        links: [
+          { label: "유튜브", url: "https://youtube.com/@teacher_rockai?si=Y5j-EmPLMpNfCFS9" },
+          { label: "인스타그램", url: "https://www.instagram.com/rockai1004/" }
+        ]
       }
     ],
     closing: [

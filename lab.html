@@ -175,6 +175,7 @@
   }
   .stage-school{background:var(--blue)}
   .stage-improve{background:var(--green)}
+  .stage-active{background:#276C6B}
   .stage-test{background:var(--amber)}
   .stage-demo{background:var(--violet)}
   .stage-idea{background:var(--muted)}
@@ -197,8 +198,27 @@
 
   .lab-feature-list{display:flex;flex-direction:column;gap:12px}
   .lab-feature-card{overflow:hidden}
+  .lab-feature-media{
+    position:relative;overflow:hidden;background:#101A24;
+  }
+  .lab-feature-media::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(to top,rgba(10,18,26,.78) 0,rgba(10,18,26,.2) 48%,rgba(10,18,26,.08) 100%);
+    pointer-events:none;
+  }
   .lab-feature-card img{
     width:100%;display:block;aspect-ratio:16/9;object-fit:cover;background:var(--soft);
+    opacity:.78;
+  }
+  .lab-feature-card img.is-portrait{
+    aspect-ratio:auto;object-fit:contain;background:#07101B;
+  }
+  .lab-feature-card img.is-contain{object-fit:contain;background:#F5F7F9}
+  .lab-feature-media-title{
+    position:absolute;z-index:1;left:16px;right:16px;bottom:14px;
+    color:#fff;font-family:'Noto Serif KR',serif;font-size:23px;font-weight:700;
+    line-height:1.25;letter-spacing:0;text-shadow:0 2px 8px rgba(0,0,0,.72);
+    word-break:keep-all;
   }
   .lab-media-placeholder{
     min-height:112px;padding:16px;background:
@@ -228,6 +248,8 @@
   .lab-roadmap-card h3{font-size:15.5px}
   .lab-principle-card p,
   .lab-roadmap-card p{font-size:13.5px;color:#293842;margin-top:5px;word-break:keep-all}
+  .lab-roadmap-links{margin-top:12px}
+  .lab-roadmap-links .lab-link{min-height:40px;padding:8px 10px}
   .lab-channel-list{border:1px solid var(--line);border-radius:9px;overflow:hidden;margin-top:13px}
   .lab-channel-row{display:grid;grid-template-columns:92px 1fr;gap:9px;padding:12px 13px;border-bottom:1px solid var(--line);background:var(--panel)}
   .lab-channel-row:nth-child(even){background:#F7F9FA}
@@ -254,15 +276,15 @@
   .lab-page-nav + .lab-report{margin-top:0}
   .lab-intro-heading{margin-top:0}
   .lab-page-header{
-    position:relative;min-height:176px;padding-right:112px;
+    position:relative;min-height:184px;padding-right:122px;
   }
   .lab-header-mascot{
-    position:absolute;right:0;top:52px;width:98px;height:122px;
-    overflow:hidden;background:var(--paper);
+    position:absolute;right:0;top:50px;width:108px;height:132px;
+    overflow:visible;background:transparent;
   }
   .lab-header-mascot img{
-    width:100%;height:122%;display:block;object-fit:cover;
-    object-position:50% 0;transform:scaleX(-1);
+    width:100%;height:100%;display:block;object-fit:contain;
+    object-position:50% 50%;filter:drop-shadow(0 6px 7px rgba(27,42,51,.18));
   }
 
   @media (min-width:520px){
@@ -271,10 +293,10 @@
   @media (min-width:820px){
     .wrap{max-width:1120px;padding:0 32px 76px}
     .doc-top{padding:20px 0 14px;font-size:13px}
-    .lab-page-header{min-height:198px;padding:34px 150px 16px 0}
+    .lab-page-header{min-height:208px;padding:34px 170px 16px 0}
     .lab-page-header h1{font-size:34px}
     .lab-page-header .sub{font-size:16px}
-    .lab-header-mascot{top:48px;right:8px;width:122px;height:152px}
+    .lab-header-mascot{top:42px;right:8px;width:148px;height:174px}
     .lab-page-nav{gap:10px;margin:20px 0 48px}
     .lab-page-nav a{padding:9px 14px;font-size:13.5px}
     .lab-section{margin-top:56px}
@@ -290,6 +312,9 @@
       grid-template-columns:minmax(280px,.72fr) minmax(0,1.55fr);
     }
     .lab-feature-card.is-primary .lab-media-placeholder{height:100%;min-height:100%}
+    .lab-feature-card.is-primary .lab-feature-media{height:100%;min-height:100%}
+    .lab-feature-card.is-primary img.is-portrait{height:100%;min-height:100%}
+    .lab-feature-card.is-primary .lab-feature-media-title{left:20px;right:20px;bottom:18px;font-size:28px}
     .lab-feature-card.is-primary .lab-feature-body{padding:24px}
     .lab-feature-card.is-primary .lab-feature-body h3{font-size:22px}
     .lab-feature-card.is-primary .lab-feature-body p{font-size:14.5px;line-height:1.76}
@@ -326,7 +351,7 @@
     <h1>돌 AI 연구소</h1>
     <p class="sub">학교의 문제를, AI로 해결합니다.</p>
     <div class="lab-header-mascot">
-      <img src="./assets/dolbot-mascot.png" alt="돌 AI 연구소 마스코트 돌봇">
+      <img src="./assets/dol-ai-lab-logo-transparent.png" alt="돌 AI 연구소 로고">
     </div>
   </header>
 
@@ -509,7 +534,7 @@
           </div>
           <h3>${escapeHtml(project.name)}</h3>
           <p>${escapeHtml(project.summary)}</p>
-          <div class="lab-owner">담당 ${escapeHtml(project.owner)}</div>
+          <div class="lab-owner">개발 및 운영 ${escapeHtml(project.owner)}</div>
           <div class="lab-link-row">
             ${project.url ? actionMarkup({ label: project.category === "홍보·운영" ? "채널 열기" : "서비스 체험", url: project.url }) : actionMarkup({ label: "상세 공개 예정", url: null })}
           </div>

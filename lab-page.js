@@ -12,7 +12,9 @@
   const stageClassMap = {
     "학교 적용": "stage-school",
     "지속 개선": "stage-improve",
+    "학교 적용+지속 개선": "stage-active",
     "내부 테스트": "stage-test",
+    "내부테스트": "stage-test",
     "데모": "stage-demo",
     "아이디어": "stage-idea",
     "보류": "stage-hold",
@@ -25,6 +27,14 @@
   const stageBadge = (stage) => (
     `<span class="stage-badge ${stageClassMap[stage] || "stage-idea"}">${escapeHtml(stage)}</span>`
   );
+  const stageOrder = {
+    "학교 적용+지속 개선": 0,
+    "데모": 1,
+    "내부테스트": 2,
+    "내부 테스트": 2,
+    "아이디어": 3,
+    "보류": 4,
+  };
 
   function actionMarkup(action, fallbackLabel) {
     const label = action?.label || fallbackLabel;
@@ -36,7 +46,17 @@
 
   function mediaMarkup(project) {
     if (project.image) {
-      return `<img src="${escapeHtml(project.image)}" alt="${escapeHtml(project.name)} 화면 이미지" loading="lazy">`;
+      const imageClassMap = {
+        portrait: "is-portrait",
+        contain: "is-contain",
+      };
+      const imageClass = imageClassMap[project.imageDisplay]
+        ? ` class="${imageClassMap[project.imageDisplay]}"`
+        : "";
+      return `<div class="lab-feature-media">
+        <img${imageClass} src="${escapeHtml(project.image)}" alt="${escapeHtml(project.name)} 소개 이미지" loading="lazy">
+        <strong class="lab-feature-media-title">${escapeHtml(project.name)}</strong>
+      </div>`;
     }
     return `<div class="lab-media-placeholder" role="img" aria-label="${escapeHtml(project.name)} 이미지 준비 중">
       <span>${escapeHtml(project.category)}</span>
@@ -73,6 +93,7 @@
           </div>
           <h3>${formatEmphasis(project.detailTitle)}</h3>
           <p>${formatEmphasis(project.detailBody)}</p>
+          ${project.accessNote ? `<div class="lab-access-note">${escapeHtml(project.accessNote)}</div>` : ""}
           <div class="lab-report-point">${escapeHtml(project.reportPoint)}</div>
           <div class="lab-link-row" style="margin-top:12px">
             ${project.actions
@@ -89,9 +110,15 @@
     .join("");
 
   function renderProjects(filter) {
-    const filtered = filter === "전체"
+    const filtered = (filter === "전체"
       ? projects
-      : projects.filter((project) => project.category === filter);
+      : projects.filter((project) => project.category === filter))
+      .map((project, index) => ({ project, index }))
+      .sort((a, b) => (
+        (stageOrder[a.project.stage] ?? 99) - (stageOrder[b.project.stage] ?? 99)
+        || a.index - b.index
+      ))
+      .map(({ project }) => project);
 
     byId("lab-project-grid").innerHTML = filtered.map((project) => `
       <section class="lab-service-card" aria-label="${escapeHtml(project.name)}">
@@ -102,7 +129,7 @@
         <h3>${escapeHtml(project.name)}</h3>
         <p>${formatEmphasis(project.summary)}</p>
         ${project.accessNote ? `<div class="lab-access-note">${escapeHtml(project.accessNote)}</div>` : ""}
-        <div class="lab-owner">담당 ${escapeHtml(project.owner)}</div>
+        <div class="lab-owner">개발 및 운영 ${escapeHtml(project.owner)}</div>
         <div class="lab-link-row">
           ${project.url
             ? actionMarkup({
@@ -138,6 +165,14 @@
         <section class="lab-roadmap-card" aria-label="방향 ${index + 1}. ${escapeHtml(direction.title)}">
           <h3>방향 ${index + 1}. ${escapeHtml(direction.title)}</h3>
           <p>${escapeHtml(direction.body)}</p>
+          ${direction.links?.length ? `
+            <div class="lab-link-row lab-roadmap-links">
+              ${direction.links.map((link) => actionMarkup({
+                label: `${link.label} 열기`,
+                url: link.url,
+              })).join("")}
+            </div>
+          ` : ""}
         </section>
       `).join("")}
     </div>
