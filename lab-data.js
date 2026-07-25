@@ -153,7 +153,7 @@ window.labData = {
       url: "https://draconis.up.railway.app/",
       image: null,
       hideMedia: true,
-      galleryLayout: "grid",
+      galleryLayout: "rail",
       galleryNote: {
         label: "CLA 기반 단계별 풀이",
         title: "정답만 보여주지 않고, 생각의 단계를 따라가도록",

@@ -67,12 +67,22 @@
 
   function galleryMarkup(project) {
     if (!project.gallery?.length) return "";
-    const galleryClass = project.galleryLayout === "grid" ? " is-grid" : "";
+    const galleryClassMap = {
+      grid: " is-grid",
+      rail: " is-rail",
+    };
+    const galleryClass = galleryClassMap[project.galleryLayout] || "";
     return `
       <div class="lab-gallery${galleryClass}" aria-label="${escapeHtml(project.name)} 화면 갤러리">
         <div class="lab-gallery-head">
           <strong>화면 갤러리</strong>
-          <span>${project.gallery.length}장</span>
+          <div class="lab-gallery-head-actions">
+            <span>${project.gallery.length}장</span>
+            ${project.galleryLayout === "rail" ? `
+              <button type="button" class="lab-gallery-scroll" data-gallery-scroll="-1" aria-label="이전 사진 보기" title="이전 사진">←</button>
+              <button type="button" class="lab-gallery-scroll" data-gallery-scroll="1" aria-label="다음 사진 보기" title="다음 사진">→</button>
+            ` : ""}
+          </div>
         </div>
         ${project.galleryNote ? `
           <div class="lab-gallery-note">
@@ -245,6 +255,16 @@
     }
 
     byId("lab-feature-list").addEventListener("click", (event) => {
+      const scrollButton = event.target.closest("[data-gallery-scroll]");
+      if (scrollButton) {
+        const rail = scrollButton.closest(".lab-gallery").querySelector(".lab-gallery-strip");
+        const direction = Number(scrollButton.dataset.galleryScroll);
+        rail.scrollBy({
+          left: direction * Math.max(rail.clientWidth * 0.82, 300),
+          behavior: "smooth",
+        });
+        return;
+      }
       const button = event.target.closest(".lab-gallery-thumb");
       if (!button) return;
       activeProject = galleryProjects.get(button.dataset.projectId);
