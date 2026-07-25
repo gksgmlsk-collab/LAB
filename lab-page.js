@@ -138,7 +138,11 @@
           </div>
           <h3>${formatEmphasis(project.detailTitle)}</h3>
           <p>${formatEmphasis(project.detailBody)}</p>
-          ${project.accessNote ? `<div class="lab-access-note">${escapeHtml(project.accessNote)}</div>` : ""}
+          ${project.accessNote && !project.hideFeaturedAccessNote ? `<div class="lab-access-note">${escapeHtml(project.accessNote)}</div>` : ""}
+          <div class="lab-feature-owner">
+            ${escapeHtml(project.ownerLabel || "개발 및 운영")} <strong>${escapeHtml(project.owner)}</strong>
+            ${project.ownerNote ? `<span>(${escapeHtml(project.ownerNote)})</span>` : ""}
+          </div>
           <div class="lab-report-point">${escapeHtml(project.reportPoint)}</div>
           ${galleryMarkup(project)}
           <div class="lab-link-row" style="margin-top:12px">
@@ -175,7 +179,10 @@
         <h3>${escapeHtml(project.name)}</h3>
         <p>${formatEmphasis(project.summary)}</p>
         ${project.accessNote ? `<div class="lab-access-note">${escapeHtml(project.accessNote)}</div>` : ""}
-        <div class="lab-owner">${escapeHtml(project.ownerLabel || "개발 및 운영")} ${escapeHtml(project.owner)}</div>
+        <div class="lab-owner">
+          ${escapeHtml(project.ownerLabel || "개발 및 운영")} ${escapeHtml(project.owner)}
+          ${project.ownerNote ? `<span>(${escapeHtml(project.ownerNote)})</span>` : ""}
+        </div>
         <div class="lab-link-row">
           ${project.url
             ? actionMarkup({

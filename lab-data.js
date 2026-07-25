@@ -172,6 +172,7 @@ window.labData = {
       category: "학습앱",
       stage: "학교 적용+지속 개선",
       owner: "조미진",
+      ownerNote: "영어콘텐츠 제공 박주현",
       summary: "학생은 드래곤을 성장시키며 학습하고, 교사는 학생별 오개념과 학습 경로를 파악하는 게임형 개인 맞춤 교수·학습 지원 시스템입니다.",
       reportPoint: "학생의 게임형 학습 경험과 교사의 개념별 맞춤 지도를 연결하는 교수·학습 지원 시스템",
       detailTitle: "드라코니스(Draconis)",
@@ -339,6 +340,7 @@ window.labData = {
       owner: "이남건",
       summary: "분산된 학교 행정과 운영 기능을 한곳에서 확인하고 처리하도록 지원하는 통합 서비스입니다.",
       accessNote: "교직원용 비밀번호: neis",
+      hideFeaturedAccessNote: true,
       reportPoint: "반복 업무와 정보 분산 문제를 학교 맞춤형 통합 플랫폼으로 개선하는 사례",
       detailTitle: "학교 업무를 한곳으로 연결하는 통합 운영 플랫폼",
       detailBody: "학교에서 반복적으로 발생하는 행정과 운영 업무를 개별 도구에 분산하지 않고 하나의 서비스 안에서 관리하는 것을 목표로 합니다. 현장의 요구에 따라 기능을 계속 추가하고 통합합니다.",
@@ -448,14 +450,14 @@ window.labData = {
       stage: "학교 적용+지속 개선",
       owner: "조미진",
       summary: "국어·사회·수학을 연계하여 미추홀구의 도시 문제를 탐구하는 교과 통합 프로젝트 앱입니다. 학생들은 실제 녹지 접근성 분석을 바탕으로 도시 불균형 문제를 발견하고, 해결 방안과 나만의 도시계획을 설계·발표합니다.",
-      accessNote: "앱에서 5학년 1반 교사계정(인증코드 26014351)으로 입장",
+      accessNote: "앱에서 5학년 1반 교사계정(비밀번호 teacher1234)으로 입장",
       reportPoint: "국어·사회·수학을 지역 도시 문제 해결과 연결한 교과 통합 프로젝트",
       detailTitle: "지역의 도시 불균형을 발견하고 해결하는 교과 통합 프로젝트",
       detailBody: "학생이 미추홀구의 도시 문제를 탐색하고 도시를 설계한 뒤 결과를 발표하는 전 과정을 인터랙티브 앱으로 경험합니다.",
       actions: [
-        { label: "서비스 체험", url: "https://projectfor5city-production.up.railway.app/" }
+        { label: "서비스 체험", url: "https://projectfor5city-production-ca83.up.railway.app/" }
       ],
-      url: "https://projectfor5city-production.up.railway.app/",
+      url: "https://projectfor5city-production-ca83.up.railway.app/",
       image: null,
       video: null,
       featured: false
