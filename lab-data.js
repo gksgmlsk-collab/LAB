@@ -75,13 +75,11 @@ window.labData = {
     groups: [
       {
         role: "연구소장",
-        names: "조미진",
-        highlightName: "조미진"
+        names: "조미진"
       },
       {
         role: "운영지원",
-        names: "박동훈 · 황차호 · 윤효진 · 서은영",
-        highlightName: "박동훈"
+        names: "박동훈 · 황차호 · 윤효진 · 서은영"
       },
       {
         role: "부서별 팀장",
@@ -115,7 +113,7 @@ window.labData = {
         title: "AI 동아리",
         lead: "김종섭",
         tone: "club",
-        body: "학생 동아리의 기획·운영을 지원하고 활동 성과를 축적합니다."
+        body: "교사·학생 동아리의 기획·운영을 지원하고 활동 성과를 축적합니다."
       }
     ],
     areas: [

@@ -322,13 +322,9 @@
       <h3 id="lab-people-title" class="lab-org-kicker">PEOPLE</h3>
       <div class="lab-people-list">
         ${data.organization.groups.map((group) => `
-          <div class="lab-person-row${group.highlightName ? " is-highlighted" : ""}">
+          <div class="lab-person-row">
             <div class="role">${escapeHtml(group.role)}</div>
-            <div class="names">
-              ${group.names.split(" · ").map((name) => (
-                `<span${name === group.highlightName ? ' class="person-highlight"' : ""}>${escapeHtml(name)}</span>`
-              )).join('<span class="person-separator" aria-hidden="true"> · </span>')}
-            </div>
+            <div class="names">${escapeHtml(group.names)}</div>
           </div>
         `).join("")}
       </div>
