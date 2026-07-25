@@ -151,13 +151,24 @@ window.labData = {
         { label: "서비스 체험", url: "https://draconis.up.railway.app/" }
       ],
       url: "https://draconis.up.railway.app/",
-      image: "./assets/draconis-cover.png",
-      imageDisplay: "portrait",
+      image: null,
+      hideMedia: true,
+      galleryLayout: "grid",
+      galleryNote: {
+        label: "CLA 기반 단계별 풀이",
+        title: "정답만 보여주지 않고, 생각의 단계를 따라가도록",
+        body: "학생이 오답을 냈을 때 문제 파악 → 계산 과정 → 최종 확인이 차례로 열립니다. 정답보다 스스로 다시 이해하고 도전하는 과정을 돕습니다."
+      },
       gallery: [
         {
           src: "./assets/draconis-learning-home.png",
           alt: "드라코니스 학습 모험 홈 화면",
           caption: "학습 모험 홈"
+        },
+        {
+          src: "./assets/draconis-world-card.png",
+          alt: "드라코니스 세계관을 보여 주는 드래곤 카드",
+          caption: "드라코니스 세계관"
         },
         {
           src: "./assets/draconis-school-overview.jpg",
@@ -170,24 +181,122 @@ window.labData = {
           caption: "과목별 학습 통계"
         },
         {
-          src: "./assets/draconis-misconceptions.jpg",
-          alt: "드라코니스 학생별 오개념 분석 화면",
-          caption: "학생별 오개념 분석"
-        },
-        {
           src: "./assets/draconis-learning-tools.jpg",
           alt: "드라코니스 학습 도구 화면",
           caption: "학습 도구"
         },
         {
-          src: "./assets/draconis-learning-analysis.jpg",
-          alt: "드라코니스 학습 분석 화면",
-          caption: "학습 분석"
+          src: "./assets/draconis-analysis-overview.jpg",
+          alt: "드라코니스 문항 유형과 주제별 학습 분석 화면",
+          caption: "문항·주제별 학습 분석"
         },
         {
-          src: "./assets/draconis-teacher-errors.jpg",
-          alt: "드라코니스 교사용 오개념 처방 화면",
+          src: "./assets/draconis-misconceptions-private.jpg",
+          alt: "학생 식별 정보를 가린 드라코니스 학생별 오개념 분석 화면",
+          caption: "학생별 오개념 분석"
+        },
+        {
+          src: "./assets/draconis-teacher-errors-private.jpg",
+          alt: "학급 정보를 가린 드라코니스 교사용 오개념 처방 화면",
           caption: "교사용 오개념 처방"
+        },
+        {
+          src: "./assets/draconis-math-fractions.jpg",
+          alt: "드라코니스 분수의 덧셈과 뺄셈 문제 화면",
+          caption: "수학 · 분수 연산"
+        },
+        {
+          src: "./assets/draconis-math-graph.jpg",
+          alt: "드라코니스 꺾은선그래프 문제 화면",
+          caption: "수학 · 그래프 해석"
+        },
+        {
+          src: "./assets/draconis-math-division.jpg",
+          alt: "드라코니스 나눗셈과 분수 문제 화면",
+          caption: "수학 · 나눗셈"
+        },
+        {
+          src: "./assets/draconis-math-ratio.jpg",
+          alt: "드라코니스 비례식과 비례배분 문제 화면",
+          caption: "수학 · 비례식"
+        },
+        {
+          src: "./assets/draconis-cla-problem.jpg",
+          alt: "드라코니스 CLA 풀이의 문제 파악 단계 화면",
+          caption: "CLA 1단계 · 문제 파악",
+          highlight: true
+        },
+        {
+          src: "./assets/draconis-cla-calculation.jpg",
+          alt: "드라코니스 CLA 풀이의 계산 과정 단계 화면",
+          caption: "CLA 2단계 · 계산 과정",
+          highlight: true
+        },
+        {
+          src: "./assets/draconis-cla-solution.jpg",
+          alt: "드라코니스 CLA 풀이의 최종 확인 단계 화면",
+          caption: "CLA 3단계 · 최종 확인",
+          highlight: true
+        },
+        {
+          src: "./assets/draconis-korean-hub.jpg",
+          alt: "드라코니스 국어 달의 미궁 학습 화면",
+          caption: "국어 · 달의 미궁"
+        },
+        {
+          src: "./assets/draconis-vocabulary-question.jpg",
+          alt: "드라코니스 어휘 던전 문제 화면",
+          caption: "국어 · 어휘 던전"
+        },
+        {
+          src: "./assets/draconis-dungeon-map.jpg",
+          alt: "드라코니스 어휘 던전 탐험 지도 화면",
+          caption: "국어 · 던전 탐험"
+        },
+        {
+          src: "./assets/draconis-reading-hub.jpg",
+          alt: "드라코니스 비문학 독해 학습 화면",
+          caption: "국어 · 비문학 독해"
+        },
+        {
+          src: "./assets/draconis-reading-passage.jpg",
+          alt: "드라코니스 읽기 자료 오답이라는 이름의 데이터 화면",
+          caption: "국어 · 읽기 자료"
+        },
+        {
+          src: "./assets/draconis-reading-question.jpg",
+          alt: "드라코니스 읽기 자료 확인 문제 화면",
+          caption: "국어 · 독해 문제"
+        },
+        {
+          src: "./assets/draconis-reading-feedback.jpg",
+          alt: "드라코니스 국어 독해 정답과 해설 화면",
+          caption: "국어 · 독해 피드백"
+        },
+        {
+          src: "./assets/draconis-english-listening.jpg",
+          alt: "드라코니스 영어 듣고 고르기 문제 화면",
+          caption: "영어 · 듣기"
+        },
+        {
+          src: "./assets/draconis-english-vocabulary.jpg",
+          alt: "드라코니스 영어 낱말 고르기 문제 화면",
+          caption: "영어 · 낱말"
+        },
+        {
+          src: "./assets/draconis-english-sentence.jpg",
+          alt: "드라코니스 영어 문장 순서 학습 화면",
+          caption: "영어 · 문장 만들기"
+        },
+        {
+          src: "./assets/draconis-exercise.jpg",
+          alt: "드라코니스 운동 활동 지원 화면",
+          caption: "생활 · 운동 활동"
+        },
+        {
+          src: "./assets/draconis-dragon-growth.jpg",
+          alt: "드라코니스 나의 드래곤 성장 화면",
+          caption: "성장 · 나의 드래곤"
         }
       ],
       video: null,

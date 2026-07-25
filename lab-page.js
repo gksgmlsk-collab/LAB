@@ -45,6 +45,7 @@
   }
 
   function mediaMarkup(project) {
+    if (project.hideMedia) return "";
     if (project.image) {
       const imageClassMap = {
         portrait: "is-portrait",
@@ -66,16 +67,24 @@
 
   function galleryMarkup(project) {
     if (!project.gallery?.length) return "";
+    const galleryClass = project.galleryLayout === "grid" ? " is-grid" : "";
     return `
-      <div class="lab-gallery" aria-label="${escapeHtml(project.name)} 화면 갤러리">
+      <div class="lab-gallery${galleryClass}" aria-label="${escapeHtml(project.name)} 화면 갤러리">
         <div class="lab-gallery-head">
           <strong>화면 갤러리</strong>
           <span>${project.gallery.length}장</span>
         </div>
+        ${project.galleryNote ? `
+          <div class="lab-gallery-note">
+            <span>${escapeHtml(project.galleryNote.label)}</span>
+            <strong>${escapeHtml(project.galleryNote.title)}</strong>
+            <p>${escapeHtml(project.galleryNote.body)}</p>
+          </div>
+        ` : ""}
         <div class="lab-gallery-strip">
           ${project.gallery.map((image, index) => `
             <button
-              class="lab-gallery-thumb"
+              class="lab-gallery-thumb${image.highlight ? " is-highlight" : ""}"
               type="button"
               data-project-id="${escapeHtml(project.id)}"
               data-gallery-index="${index}"
@@ -110,7 +119,7 @@
     .map((id) => projects.find((project) => project.id === id))
     .filter(Boolean)
     .map((project) => `
-      <section class="lab-feature-card${project.id === "draconis" ? " is-primary" : ""}" data-project-id="${escapeHtml(project.id)}" aria-label="${escapeHtml(project.name)} 대표 서비스">
+      <section class="lab-feature-card${project.id === "draconis" ? " is-primary" : ""}${project.hideMedia ? " has-no-media" : ""}" data-project-id="${escapeHtml(project.id)}" aria-label="${escapeHtml(project.name)} 대표 서비스">
         ${mediaMarkup(project)}
         <div class="lab-feature-body">
           <div class="lab-card-head">
