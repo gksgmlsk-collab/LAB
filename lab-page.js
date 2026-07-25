@@ -64,6 +64,32 @@
     </div>`;
   }
 
+  function galleryMarkup(project) {
+    if (!project.gallery?.length) return "";
+    return `
+      <div class="lab-gallery" aria-label="${escapeHtml(project.name)} 화면 갤러리">
+        <div class="lab-gallery-head">
+          <strong>화면 갤러리</strong>
+          <span>${project.gallery.length}장</span>
+        </div>
+        <div class="lab-gallery-strip">
+          ${project.gallery.map((image, index) => `
+            <button
+              class="lab-gallery-thumb"
+              type="button"
+              data-project-id="${escapeHtml(project.id)}"
+              data-gallery-index="${index}"
+              aria-label="${escapeHtml(image.caption)} 크게 보기"
+            >
+              <img src="${escapeHtml(image.src)}" alt="" loading="lazy">
+              <span>${escapeHtml(image.caption)}</span>
+            </button>
+          `).join("")}
+        </div>
+      </div>
+    `;
+  }
+
   byId("lab-intro-label").textContent = data.intro.label;
   byId("lab-intro-content").innerHTML = `
     <h3 class="lab-title">${escapeHtml(data.intro.title)}</h3>
@@ -95,6 +121,7 @@
           <p>${formatEmphasis(project.detailBody)}</p>
           ${project.accessNote ? `<div class="lab-access-note">${escapeHtml(project.accessNote)}</div>` : ""}
           <div class="lab-report-point">${escapeHtml(project.reportPoint)}</div>
+          ${galleryMarkup(project)}
           <div class="lab-link-row" style="margin-top:12px">
             ${project.actions
               .filter((action) => action.url)
@@ -129,7 +156,7 @@
         <h3>${escapeHtml(project.name)}</h3>
         <p>${formatEmphasis(project.summary)}</p>
         ${project.accessNote ? `<div class="lab-access-note">${escapeHtml(project.accessNote)}</div>` : ""}
-        <div class="lab-owner">개발 및 운영 ${escapeHtml(project.owner)}</div>
+        <div class="lab-owner">${escapeHtml(project.ownerLabel || "개발 및 운영")} ${escapeHtml(project.owner)}</div>
         <div class="lab-link-row">
           ${project.url
             ? actionMarkup({
@@ -157,6 +184,79 @@
     renderProjects(button.dataset.filter);
   });
   renderProjects("전체");
+
+  const galleryProjects = new Map(
+    projects
+      .filter((project) => project.gallery?.length)
+      .map((project) => [project.id, project])
+  );
+  if (galleryProjects.size) {
+    document.body.insertAdjacentHTML("beforeend", `
+      <dialog class="lab-gallery-dialog" id="lab-gallery-dialog" aria-labelledby="lab-gallery-dialog-title">
+        <div class="lab-gallery-dialog-shell">
+          <div class="lab-gallery-dialog-head">
+            <div>
+              <strong id="lab-gallery-dialog-title"></strong>
+              <span id="lab-gallery-dialog-count"></span>
+            </div>
+            <button type="button" class="lab-gallery-icon" data-gallery-close aria-label="갤러리 닫기" title="닫기">×</button>
+          </div>
+          <div class="lab-gallery-dialog-stage">
+            <button type="button" class="lab-gallery-icon lab-gallery-prev" data-gallery-prev aria-label="이전 이미지" title="이전 이미지">←</button>
+            <img id="lab-gallery-dialog-image" src="" alt="">
+            <button type="button" class="lab-gallery-icon lab-gallery-next" data-gallery-next aria-label="다음 이미지" title="다음 이미지">→</button>
+          </div>
+          <div class="lab-gallery-dialog-caption" id="lab-gallery-dialog-caption"></div>
+        </div>
+      </dialog>
+    `);
+
+    const dialog = byId("lab-gallery-dialog");
+    const dialogImage = byId("lab-gallery-dialog-image");
+    const dialogTitle = byId("lab-gallery-dialog-title");
+    const dialogCount = byId("lab-gallery-dialog-count");
+    const dialogCaption = byId("lab-gallery-dialog-caption");
+    let activeProject = null;
+    let activeIndex = 0;
+
+    function updateGallery() {
+      const image = activeProject.gallery[activeIndex];
+      dialogImage.src = image.src;
+      dialogImage.alt = image.alt;
+      dialogTitle.textContent = activeProject.name;
+      dialogCount.textContent = `${activeIndex + 1} / ${activeProject.gallery.length}`;
+      dialogCaption.textContent = image.caption;
+    }
+
+    function moveGallery(direction) {
+      activeIndex = (
+        activeIndex + direction + activeProject.gallery.length
+      ) % activeProject.gallery.length;
+      updateGallery();
+    }
+
+    byId("lab-feature-list").addEventListener("click", (event) => {
+      const button = event.target.closest(".lab-gallery-thumb");
+      if (!button) return;
+      activeProject = galleryProjects.get(button.dataset.projectId);
+      activeIndex = Number(button.dataset.galleryIndex);
+      updateGallery();
+      dialog.showModal();
+    });
+    dialog.addEventListener("click", (event) => {
+      if (event.target === dialog || event.target.closest("[data-gallery-close]")) {
+        dialog.close();
+      } else if (event.target.closest("[data-gallery-prev]")) {
+        moveGallery(-1);
+      } else if (event.target.closest("[data-gallery-next]")) {
+        moveGallery(1);
+      }
+    });
+    dialog.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowLeft") moveGallery(-1);
+      if (event.key === "ArrowRight") moveGallery(1);
+    });
+  }
 
   byId("lab-roadmap-content").innerHTML = `
     <h3>${escapeHtml(data.roadmap.title)}</h3>

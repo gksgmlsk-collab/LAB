@@ -135,7 +135,7 @@ window.labData = {
     { name: "학교 적용+지속 개선", body: "실제 학교에 적용하고 현장 사용 결과를 반영해 지속적으로 개선하는 단계" },
     { name: "보류", body: "우선순위 또는 운영 여건을 검토하는 단계" }
   ],
-  filters: ["전체", "학습앱", "행정앱", "개인 실험"],
+  filters: ["전체", "학습앱", "행정앱", "홍보·운영", "개인 실험"],
   projects: [
     {
       id: "draconis",
@@ -151,8 +151,45 @@ window.labData = {
         { label: "서비스 체험", url: "https://draconis.up.railway.app/" }
       ],
       url: "https://draconis.up.railway.app/",
-      image: "./assets/draconis-card.jpeg",
+      image: "./assets/draconis-cover.png",
       imageDisplay: "portrait",
+      gallery: [
+        {
+          src: "./assets/draconis-learning-home.png",
+          alt: "드라코니스 학습 모험 홈 화면",
+          caption: "학습 모험 홈"
+        },
+        {
+          src: "./assets/draconis-school-overview.jpg",
+          alt: "드라코니스 학교 통합 참여 현황 화면",
+          caption: "학교 통합 참여 현황"
+        },
+        {
+          src: "./assets/draconis-subject-stats.jpg",
+          alt: "드라코니스 과목별 학습 통계 화면",
+          caption: "과목별 학습 통계"
+        },
+        {
+          src: "./assets/draconis-misconceptions.jpg",
+          alt: "드라코니스 학생별 오개념 분석 화면",
+          caption: "학생별 오개념 분석"
+        },
+        {
+          src: "./assets/draconis-learning-tools.jpg",
+          alt: "드라코니스 학습 도구 화면",
+          caption: "학습 도구"
+        },
+        {
+          src: "./assets/draconis-learning-analysis.jpg",
+          alt: "드라코니스 학습 분석 화면",
+          caption: "학습 분석"
+        },
+        {
+          src: "./assets/draconis-teacher-errors.jpg",
+          alt: "드라코니스 교사용 오개념 처방 화면",
+          caption: "교사용 오개념 처방"
+        }
+      ],
       video: null,
       featured: true
     },
@@ -317,6 +354,25 @@ window.labData = {
         { label: "서비스 체험", url: "https://2026-rockam.up.railway.app" }
       ],
       url: "https://2026-rockam.up.railway.app",
+      image: null,
+      video: null,
+      featured: false
+    },
+    {
+      id: "notion",
+      name: "돌 AI 연구소 노션",
+      category: "홍보·운영",
+      stage: "학교 적용+지속 개선",
+      owner: "한희나",
+      ownerLabel: "관리 및 운영",
+      summary: "연구소의 프로젝트 정보, 개발 단계, 서비스 링크와 개선 과정을 한곳에서 기록하고 공유하는 운영 채널입니다.",
+      reportPoint: "연구소의 프로젝트와 개선 과정을 지속적으로 기록하고 공유하는 운영 채널",
+      detailTitle: "프로젝트 기록과 공유를 위한 연구소 운영 채널",
+      detailBody: "프로젝트별 정보와 개발 단계, 서비스 링크, 개선 과정을 한곳에서 확인할 수 있도록 정리합니다.",
+      actions: [
+        { label: "채널 열기", url: "https://app.notion.com/p/AI-39b6de4b73a881c89e81fe2c29f38cbf?source=copy_link" }
+      ],
+      url: "https://app.notion.com/p/AI-39b6de4b73a881c89e81fe2c29f38cbf?source=copy_link",
       image: null,
       video: null,
       featured: false

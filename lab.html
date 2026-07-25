@@ -206,14 +206,14 @@
     background:linear-gradient(to top,rgba(10,18,26,.78) 0,rgba(10,18,26,.2) 48%,rgba(10,18,26,.08) 100%);
     pointer-events:none;
   }
-  .lab-feature-card img{
+  .lab-feature-media > img{
     width:100%;display:block;aspect-ratio:16/9;object-fit:cover;background:var(--soft);
     opacity:.78;
   }
-  .lab-feature-card img.is-portrait{
+  .lab-feature-media > img.is-portrait{
     aspect-ratio:auto;object-fit:contain;background:#07101B;
   }
-  .lab-feature-card img.is-contain{object-fit:contain;background:#F5F7F9}
+  .lab-feature-media > img.is-contain{object-fit:contain;background:#F5F7F9}
   .lab-feature-media-title{
     position:absolute;z-index:1;left:16px;right:16px;bottom:14px;
     color:#fff;font-family:'Noto Serif KR',serif;font-size:23px;font-weight:700;
@@ -233,6 +233,67 @@
   .lab-report-point{
     margin-top:10px;border-left:3px solid var(--gold);padding:8px 0 8px 10px;
     font-size:13px;color:#293842;background:#FBF7EB;word-break:keep-all;
+  }
+  .lab-gallery{margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}
+  .lab-gallery-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}
+  .lab-gallery-head strong{font-size:13px;color:var(--navy)}
+  .lab-gallery-head span{font-size:11.5px;color:var(--sub)}
+  .lab-gallery-strip{
+    display:flex;gap:8px;overflow-x:auto;overscroll-behavior-inline:contain;
+    padding:1px 1px 7px;scrollbar-width:thin;
+  }
+  .lab-gallery-thumb{
+    flex:0 0 76px;width:76px;padding:0;overflow:hidden;cursor:pointer;
+    border:1px solid var(--line);border-radius:6px;background:var(--panel);color:var(--navy);
+    font:inherit;text-align:left;
+  }
+  .lab-gallery-thumb img{
+    width:100%;height:88px;display:block;object-fit:cover;object-position:50% 0;
+    background:#10112C;
+  }
+  .lab-gallery-thumb span{
+    display:block;min-height:40px;padding:6px;font-size:10.5px;font-weight:700;
+    line-height:1.35;word-break:keep-all;
+  }
+  .lab-gallery-thumb:hover{border-color:var(--steel)}
+  .lab-gallery-thumb:focus-visible{outline:2px solid var(--steel);outline-offset:2px}
+  .lab-gallery-dialog{
+    width:min(900px,calc(100% - 24px));max-width:900px;margin:auto;padding:0;border:0;
+    border-radius:8px;background:transparent;color:var(--ink);
+  }
+  .lab-gallery-dialog::backdrop{background:rgba(10,18,26,.78)}
+  .lab-gallery-dialog-shell{
+    overflow:hidden;border:1px solid rgba(255,255,255,.16);border-radius:8px;
+    background:var(--panel);box-shadow:0 20px 60px rgba(0,0,0,.32);
+  }
+  .lab-gallery-dialog-head{
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
+    min-height:56px;padding:10px 12px 10px 16px;border-bottom:1px solid var(--line);
+  }
+  .lab-gallery-dialog-head > div{min-width:0}
+  .lab-gallery-dialog-head strong{display:block;font-size:15px;color:var(--navy)}
+  .lab-gallery-dialog-head span{display:block;margin-top:1px;font-size:12px;color:var(--sub)}
+  .lab-gallery-icon{
+    flex:0 0 42px;width:42px;height:42px;border:1px solid rgba(255,255,255,.28);
+    border-radius:50%;background:rgba(16,26,36,.78);color:#fff;
+    font:inherit;font-size:22px;line-height:1;cursor:pointer;
+  }
+  .lab-gallery-icon:focus-visible{outline:2px solid #fff;outline-offset:2px}
+  .lab-gallery-dialog-head .lab-gallery-icon{
+    border-color:var(--line);background:var(--soft);color:var(--navy);
+  }
+  .lab-gallery-dialog-stage{
+    position:relative;display:flex;align-items:center;justify-content:center;
+    min-height:300px;padding:14px 62px;background:#0E102B;
+  }
+  .lab-gallery-dialog-stage img{
+    display:block;max-width:100%;max-height:72vh;object-fit:contain;background:#0E102B;
+  }
+  .lab-gallery-prev,.lab-gallery-next{position:absolute;top:50%;transform:translateY(-50%)}
+  .lab-gallery-prev{left:10px}
+  .lab-gallery-next{right:10px}
+  .lab-gallery-dialog-caption{
+    min-height:48px;padding:13px 16px;font-size:13.5px;font-weight:700;color:var(--navy);
   }
 
   .lab-path{display:flex;flex-direction:column;gap:7px;margin-top:13px}
@@ -319,11 +380,13 @@
     }
     .lab-feature-card.is-primary .lab-media-placeholder{height:100%;min-height:100%}
     .lab-feature-card.is-primary .lab-feature-media{height:100%;min-height:100%}
-    .lab-feature-card.is-primary img.is-portrait{height:100%;min-height:100%}
+    .lab-feature-card.is-primary .lab-feature-media > img.is-portrait{height:100%;min-height:100%}
     .lab-feature-card.is-primary .lab-feature-media-title{left:20px;right:20px;bottom:18px;font-size:28px}
     .lab-feature-card.is-primary .lab-feature-body{padding:24px}
     .lab-feature-card.is-primary .lab-feature-body h3{font-size:22px}
     .lab-feature-card.is-primary .lab-feature-body p{font-size:14.5px;line-height:1.76}
+    .lab-feature-card.is-primary .lab-gallery-thumb{flex-basis:82px;width:82px}
+    .lab-feature-card.is-primary .lab-gallery-thumb img{height:96px}
     .lab-feature-body{display:flex;flex:1;flex-direction:column;padding:18px}
     .lab-feature-body .lab-link-row{margin-top:auto!important;padding-top:14px}
     .lab-media-placeholder{min-height:150px}
@@ -544,7 +607,7 @@
           </div>
           <h3>${escapeHtml(project.name)}</h3>
           <p>${escapeHtml(project.summary)}</p>
-          <div class="lab-owner">개발 및 운영 ${escapeHtml(project.owner)}</div>
+          <div class="lab-owner">${escapeHtml(project.ownerLabel || "개발 및 운영")} ${escapeHtml(project.owner)}</div>
           <div class="lab-link-row">
             ${project.url ? actionMarkup({ label: project.category === "홍보·운영" ? "채널 열기" : "서비스 체험", url: project.url }) : actionMarkup({ label: "상세 공개 예정", url: null })}
           </div>
