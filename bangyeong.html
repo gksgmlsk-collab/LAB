@@ -149,6 +149,190 @@
   .cta .d{font-size:12px;color:#D3E0EA;margin-top:2px}
   .cta .arw{font-size:20px;color:#F0D48A}
 
+  /* ── 보고서 큰 목록 ── */
+  .report-section-nav{
+    display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:10px;margin-top:24px;
+  }
+  .report-section-link{
+    min-height:50px;display:flex;align-items:center;justify-content:center;
+    border:1px solid var(--line);border-radius:7px;
+    background:#fff;color:var(--navy);font-weight:700;text-decoration:none;
+    text-align:center;padding:10px 12px;
+  }
+  .report-section-link::before,
+  .report-group-title::before{
+    content:"▣";flex:0 0 auto;margin-right:8px;
+    color:var(--green);font-family:'IBM Plex Sans KR',sans-serif;
+    font-size:.82em;line-height:1;
+  }
+  .report-section-link:hover{border-color:var(--steel);background:var(--soft)}
+  .report-section-link:focus-visible,
+  .report-group > summary:focus-visible{
+    outline:3px solid #D9B85F;outline-offset:3px;
+  }
+  .report-group{
+    margin-top:34px;border-top:3px solid var(--navy);
+    scroll-margin-top:20px;
+  }
+  .report-group > summary{
+    list-style:none;cursor:pointer;display:flex;align-items:center;
+    justify-content:space-between;gap:16px;
+    min-height:62px;padding:14px 2px 12px;
+    border-bottom:1px solid var(--line);
+    font-family:'Noto Serif KR',serif;font-size:22px;font-weight:700;
+    color:var(--navy);
+  }
+  .report-group > summary::-webkit-details-marker{display:none}
+  .report-group-title{
+    display:inline-flex;align-items:center;word-break:keep-all;
+  }
+  .report-group-state{
+    flex:0 0 auto;display:inline-flex;align-items:center;gap:6px;
+    color:var(--steel);font-family:'IBM Plex Sans KR',sans-serif;
+    font-size:12px;font-weight:700;
+  }
+  .report-group-state::after{
+    content:"+";width:24px;height:24px;display:inline-flex;
+    align-items:center;justify-content:center;border:1px solid var(--line);
+    border-radius:4px;background:#fff;font-size:18px;line-height:1;
+  }
+  .report-group[open] > summary .report-group-state::after{content:"−"}
+  .report-group-body{padding-top:2px}
+  .report-group-body > section:first-child{margin-top:24px}
+
+  /* ── 수상작 연구보고서 ── */
+  .research-report{margin-top:34px;border-top-width:1px}
+  .research-report .report-group-body{padding-top:24px}
+  .research-title{
+    font-family:'Noto Serif KR',serif;font-size:24px;font-weight:700;
+    line-height:1.45;color:var(--navy);word-break:keep-all;
+  }
+  .research-desc{
+    max-width:780px;margin-top:12px;color:#293842;line-height:1.75;
+    word-break:keep-all;
+  }
+  .research-meta{
+    margin-top:13px;color:var(--steel);font-size:13.5px;font-weight:700;
+    word-break:keep-all;
+  }
+  .research-actions{
+    display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px;
+  }
+  .research-action{
+    min-height:48px;display:inline-flex;align-items:center;justify-content:center;
+    gap:9px;border:1px solid var(--navy);border-radius:7px;padding:10px 13px;
+    color:var(--navy);background:#fff;text-decoration:none;font-weight:700;
+    text-align:center;
+  }
+  .research-action.primary{background:var(--navy);color:#fff}
+  .research-action .action-icon{
+    display:inline-flex;align-items:center;justify-content:center;
+    min-width:27px;height:22px;padding:0 5px;border:1px solid currentColor;
+    border-radius:3px;font-size:10px;font-weight:700;line-height:1;
+  }
+  .research-action:focus-visible,
+  .gallery-nav button:focus-visible,
+  .research-image-button:focus-visible,
+  .lightbox-close:focus-visible{
+    outline:3px solid #D9B85F;outline-offset:3px;
+  }
+  .research-video{margin-top:24px;scroll-margin-top:20px}
+  .research-video-heading{
+    display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;
+    margin-bottom:10px;
+  }
+  .research-video-kicker{
+    color:var(--green);font-size:12px;font-weight:800;
+  }
+  .research-video-heading h4{
+    margin:0;color:var(--navy);font-size:16px;line-height:1.5;
+  }
+  .research-video-frame{
+    overflow:hidden;border:1px solid var(--line);border-radius:7px;
+    background:#08111c;
+  }
+  .research-video video{
+    display:block;width:100%;max-height:min(72vh,720px);background:#000;
+  }
+  .research-gallery{
+    margin-top:24px;
+  }
+  .gallery-toolbar{
+    min-height:52px;display:flex;align-items:center;justify-content:space-between;
+    gap:16px;padding:0 2px 10px;
+  }
+  .gallery-label{font-weight:700;color:var(--navy)}
+  .gallery-nav{display:flex;align-items:center;gap:8px}
+  .gallery-count{
+    min-width:66px;text-align:center;color:var(--sub);
+    font-size:13px;font-weight:700;font-variant-numeric:tabular-nums;
+  }
+  .gallery-nav button{
+    width:44px;height:44px;border:1px solid var(--line);border-radius:6px;
+    background:#fff;color:var(--navy);font:700 24px/1 'IBM Plex Sans KR',sans-serif;
+    cursor:pointer;
+  }
+  .gallery-nav button:hover{border-color:var(--steel);background:var(--soft)}
+  .gallery-nav button:disabled{opacity:.35;cursor:default;background:#fff}
+  .research-gallery-viewport{
+    width:100%;overflow-x:auto;scroll-snap-type:x mandatory;
+    scroll-behavior:smooth;overscroll-behavior-x:contain;
+    scrollbar-width:thin;scrollbar-color:var(--steel) var(--soft);
+  }
+  .research-gallery-track{display:flex;align-items:flex-start;gap:14px}
+  .research-slide{
+    flex:0 0 100%;scroll-snap-align:start;scroll-snap-stop:always;
+  }
+  .research-image-button{
+    display:block;width:100%;border:1px solid var(--line);border-radius:7px;
+    aspect-ratio:var(--page-ratio,16/9);padding:0;
+    overflow:hidden;background:#F3F5F6;cursor:zoom-in;
+  }
+  .research-slide img{
+    display:block;width:100%;height:100%;
+    object-fit:cover;object-position:center var(--crop-y,50%);background:#fff;
+  }
+  .research-slide figcaption{
+    padding:8px 2px 11px;color:var(--sub);font-size:12px;
+    font-variant-numeric:tabular-nums;
+  }
+
+  /* ── 연구보고서 확대 보기 ── */
+  .report-lightbox{
+    width:min(96vw,1280px,var(--lightbox-fit-width,calc(167.111vh - 104px)));
+    max-width:none;height:auto;max-height:94vh;
+    padding:0;border:0;border-radius:8px;background:#101820;color:#fff;
+    overflow:hidden;
+  }
+  .report-lightbox::backdrop{background:rgba(12,20,26,.86)}
+  .lightbox-bar{
+    min-height:58px;display:flex;align-items:center;justify-content:space-between;
+    gap:16px;padding:8px 12px 8px 18px;background:#101820;
+  }
+  .lightbox-title{font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .lightbox-controls{display:flex;align-items:center;gap:7px}
+  .lightbox-count{
+    min-width:68px;text-align:center;font-size:12px;color:#C8D3DA;
+    font-variant-numeric:tabular-nums;
+  }
+  .lightbox-controls button{
+    width:42px;height:42px;border:1px solid #50616D;border-radius:6px;
+    background:#1B2A33;color:#fff;font:700 22px/1 'IBM Plex Sans KR',sans-serif;
+    cursor:pointer;
+  }
+  .lightbox-controls button:disabled{opacity:.35;cursor:default}
+  .lightbox-close{font-size:25px!important}
+  .lightbox-media{
+    display:flex;align-items:center;justify-content:center;
+    width:100%;height:auto;aspect-ratio:var(--page-ratio,16/9);padding:0;
+    overflow:hidden;background:#101820;
+  }
+  .lightbox-media img{
+    display:block;width:100%;height:100%;
+    object-fit:cover;object-position:center var(--crop-y,50%);background:#fff;
+  }
+
   footer{
     margin-top:34px;padding-top:14px;border-top:2px solid var(--navy);
     font-size:11.5px;color:var(--sub);word-break:keep-all;line-height:1.55;
@@ -175,7 +359,27 @@
     .compare{padding:22px 20px 16px}
     .studies{margin-top:8px}
     .srow{padding:16px 18px}
+    .report-section-nav{margin-top:30px;gap:14px}
+    .report-section-link{min-height:56px;font-size:16px}
+    .report-group{margin-top:48px}
+    .report-group > summary{min-height:72px;font-size:27px;padding:18px 4px 15px}
+    .report-group-body > section:first-child{margin-top:32px}
+    .research-report{margin-top:48px}
+    .research-report .report-group-body{padding-top:30px}
+    .research-title{font-size:30px}
+    .research-desc{font-size:16px}
+    .research-actions{display:flex}
+    .research-action{min-width:210px}
+    .gallery-toolbar{padding-top:2px}
     footer{margin-top:50px}
+  }
+  @media (max-width:460px){
+    .research-actions{grid-template-columns:1fr}
+    .gallery-toolbar{align-items:flex-end}
+    .gallery-label{font-size:13.5px}
+    .report-lightbox{width:100vw;max-height:100vh;border-radius:0}
+    .lightbox-title{max-width:120px}
+    .lightbox-media{height:auto;padding:0}
   }
 </style>
 </head>
@@ -207,6 +411,17 @@
     <p>수상작은 인천 초등학교 주변 <b>녹지 환경을 아이의 실제 걸음 기준으로 진단</b>한 것으로, 교육청 시설·환경 정책의 판단 근거로 즉시 활용·확장할 수 있습니다.</p>
   </div>
 
+  <nav class="report-section-nav" aria-label="수상 결과 보고 구성">
+    <a class="report-section-link" href="#award-overview" data-report-target="award-overview">수상작 개요</a>
+    <a class="report-section-link" href="#research-report" data-report-target="research-report">수상작 연구보고서</a>
+  </nav>
+
+  <details class="report-group report-overview" id="award-overview">
+    <summary id="award-overview-heading">
+      <span class="report-group-title">수상작 개요</span>
+      <span class="report-group-state" aria-hidden="true">펼치기</span>
+    </summary>
+    <div class="report-group-body">
   <section>
     <h2><span class="no">1</span>연구 목적</h2>
     <p class="body">학교와 거주지 주변의 숲·공원 같은 녹지는 아동의 <b>집중력·정서 안정·정신건강</b>과 깊이 연관된다는 것이 다수의 선행연구로 확인되어 왔습니다.</p>
@@ -280,6 +495,84 @@
       <span class="arw">→</span>
     </a>
   </section>
+    </div>
+  </details>
+
+  <details class="report-group research-report" id="research-report">
+    <summary id="research-report-heading">
+      <span class="report-group-title">수상작 연구보고서</span>
+      <span class="report-group-state" aria-hidden="true">펼치기</span>
+    </summary>
+    <div class="report-group-body">
+    <div class="research-title">반경 너머, 도달 가능성으로</div>
+    <p class="research-desc">도보 네트워크, 보행 부담, 활동 가능 면적을 다층적으로 분석하여 초등학생의 야외활동 기회 격차를 진단하고, AI 기반 우선지원 의사결정을 지원한 연구보고서입니다.</p>
+    <p class="research-meta">총 29쪽 · 문제 정의부터 미래 수요 예측, AI 후보지 추천, 정책 적용 및 검증 부록까지</p>
+
+    <div class="research-actions">
+      <a class="research-action primary" href="#research-gallery">
+        <span class="action-icon" aria-hidden="true">VIEW</span>
+        <span>연구보고서 미리보기</span>
+      </a>
+      <a class="research-action" href="assets/bangyeong-research/bangyeong-research-report.pdf" target="_blank" rel="noopener">
+        <span class="action-icon" aria-hidden="true">PDF</span>
+        <span>PDF 원문 보기</span>
+      </a>
+      <a class="research-action" href="#research-video">
+        <span class="action-icon" aria-hidden="true">VIDEO</span>
+        <span>발표 영상 보기</span>
+      </a>
+    </div>
+
+    <section class="research-video" id="research-video" aria-labelledby="research-video-title">
+      <div class="research-video-heading">
+        <span class="research-video-kicker">수상작 발표 영상</span>
+        <h4 id="research-video-title">제8회 교육 공공데이터 AI 활용대회 DATA ROCK팀 PT 발표</h4>
+      </div>
+      <div class="research-video-frame">
+        <video controls preload="metadata" playsinline poster="assets/bangyeong-research/report-page-01.png">
+          <source src="assets/bangyeong-research/data-rock-presentation.mp4" type="video/mp4">
+          브라우저가 동영상 재생을 지원하지 않습니다.
+        </video>
+      </div>
+    </section>
+
+    <div class="research-gallery" id="research-gallery">
+      <div class="gallery-toolbar">
+        <div class="gallery-label">연구보고서 미리보기</div>
+        <div class="gallery-nav" aria-label="연구보고서 페이지 이동">
+          <button type="button" id="research-prev" aria-label="이전 페이지">‹</button>
+          <span class="gallery-count" id="research-count" aria-live="polite">1 / 29</span>
+          <button type="button" id="research-next" aria-label="다음 페이지">›</button>
+        </div>
+      </div>
+      <div class="research-gallery-viewport" id="research-viewport" tabindex="0" aria-label="반경 너머, 도달 가능성으로 연구보고서 29쪽">
+        <div class="research-gallery-track" id="research-track">
+          <figure class="research-slide" data-page="1">
+            <button class="research-image-button" type="button" aria-label="연구보고서 1쪽 크게 보기">
+              <img src="assets/bangyeong-research/report-page-01.png" alt="반경 너머, 도달 가능성으로 연구보고서 1쪽" width="2105" height="1489">
+            </button>
+            <figcaption>1쪽 / 29쪽</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+    </div>
+  </details>
+
+  <dialog class="report-lightbox" id="report-lightbox" aria-labelledby="lightbox-title">
+    <div class="lightbox-bar">
+      <div class="lightbox-title" id="lightbox-title">반경 너머, 도달 가능성으로</div>
+      <div class="lightbox-controls">
+        <button type="button" id="lightbox-prev" aria-label="이전 페이지">‹</button>
+        <span class="lightbox-count" id="lightbox-count" aria-live="polite">1 / 29</span>
+        <button type="button" id="lightbox-next" aria-label="다음 페이지">›</button>
+        <button type="button" class="lightbox-close" id="lightbox-close" aria-label="확대 보기 닫기">×</button>
+      </div>
+    </div>
+    <div class="lightbox-media">
+      <img id="lightbox-image" src="assets/bangyeong-research/report-page-01.png" alt="반경 너머, 도달 가능성으로 연구보고서 1쪽 크게 보기">
+    </div>
+  </dialog>
 
   <footer>
     「제8회 교육 공공데이터 AI 활용대회」 교육부·전국 17개 시도교육청 공동 주최 · KERIS 주관<br>
@@ -287,5 +580,196 @@
   </footer>
 
 </div>
+<script>
+  (() => {
+    const reportGroups = Array.from(document.querySelectorAll('.report-group'));
+
+    const syncGroupState = (group) => {
+      const state = group.querySelector(':scope > summary .report-group-state');
+      if (state) state.textContent = group.open ? '접기' : '펼치기';
+    };
+
+    const revealTarget = (target) => {
+      const group = target.matches('.report-group')
+        ? target
+        : target.closest('.report-group');
+      if (group) group.open = true;
+    };
+
+    reportGroups.forEach((group) => {
+      syncGroupState(group);
+      group.addEventListener('toggle', () => syncGroupState(group));
+    });
+
+    document.querySelectorAll('[data-report-target]').forEach((link) => {
+      link.addEventListener('click', (event) => {
+        const target = document.getElementById(link.dataset.reportTarget);
+        if (!target) return;
+        event.preventDefault();
+        revealTarget(target);
+        history.pushState(null, '', link.getAttribute('href'));
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+      if (link.hasAttribute('data-report-target')) return;
+      const href = link.getAttribute('href');
+      if (!href || href === '#') return;
+      link.addEventListener('click', () => {
+        const target = document.getElementById(href.slice(1));
+        if (target) revealTarget(target);
+      });
+    });
+
+    const revealHash = () => {
+      if (!location.hash) return;
+      const target = document.getElementById(location.hash.slice(1));
+      if (target) revealTarget(target);
+    };
+
+    window.addEventListener('hashchange', revealHash);
+    revealHash();
+
+    const totalPages = 29;
+    const assetPath = (page) =>
+      `assets/bangyeong-research/report-page-${String(page).padStart(2, '0')}.png`;
+    const sourceWidth = 2105;
+    const sourceHeight = 1489;
+    const pageCropBounds = [
+      [152, 1335], [173, 1304], [173, 1324], [173, 1319], [173, 1320],
+      [173, 1310], [173, 1309], [173, 1310], [173, 1312], [173, 1323],
+      [173, 1318], [173, 1321], [173, 1310], [173, 1328], [173, 1312],
+      [173, 1321], [173, 1318], [152, 1335], [173, 1301], [173, 1291],
+      [173, 1285], [173, 1301], [207, 1329], [173, 1321], [173, 1311],
+      [173, 1306], [173, 1305], [173, 1306], [173, 1314]
+    ];
+
+    const applyPageCrop = (element, page) => {
+      const [top, bottom] = pageCropBounds[page - 1];
+      const contentHeight = bottom - top + 1;
+      const verticalOverflow = sourceHeight - contentHeight;
+      const cropY = verticalOverflow > 0 ? (top / verticalOverflow) * 100 : 50;
+      const ratio = sourceWidth / contentHeight;
+
+      element.style.setProperty('--page-ratio', `${sourceWidth} / ${contentHeight}`);
+      element.style.setProperty('--crop-y', `${cropY.toFixed(3)}%`);
+      element.style.setProperty(
+        '--lightbox-fit-width',
+        `calc(${(ratio * 94).toFixed(3)}vh - ${(ratio * 58).toFixed(3)}px)`
+      );
+    };
+
+    const track = document.getElementById('research-track');
+    const viewport = document.getElementById('research-viewport');
+    const count = document.getElementById('research-count');
+    const prev = document.getElementById('research-prev');
+    const next = document.getElementById('research-next');
+    applyPageCrop(track.querySelector('.research-slide[data-page="1"]'), 1);
+
+    for (let page = 2; page <= totalPages; page += 1) {
+      const figure = document.createElement('figure');
+      figure.className = 'research-slide';
+      figure.dataset.page = String(page);
+      figure.innerHTML = `
+        <button class="research-image-button" type="button" aria-label="연구보고서 ${page}쪽 크게 보기">
+          <img src="${assetPath(page)}" alt="반경 너머, 도달 가능성으로 연구보고서 ${page}쪽" width="2105" height="1489" loading="lazy">
+        </button>
+        <figcaption>${page}쪽 / ${totalPages}쪽</figcaption>
+      `;
+      applyPageCrop(figure, page);
+      track.appendChild(figure);
+    }
+
+    const slides = Array.from(track.querySelectorAll('.research-slide'));
+    let currentIndex = 0;
+
+    const updateGallery = (index) => {
+      currentIndex = Math.max(0, Math.min(totalPages - 1, index));
+      count.textContent = `${currentIndex + 1} / ${totalPages}`;
+      prev.disabled = currentIndex === 0;
+      next.disabled = currentIndex === totalPages - 1;
+    };
+
+    const goToPage = (index) => {
+      const targetIndex = Math.max(0, Math.min(totalPages - 1, index));
+      viewport.scrollTo({ left: slides[targetIndex].offsetLeft, behavior: 'smooth' });
+      updateGallery(targetIndex);
+    };
+
+    prev.addEventListener('click', () => goToPage(currentIndex - 1));
+    next.addEventListener('click', () => goToPage(currentIndex + 1));
+
+    viewport.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        goToPage(currentIndex - 1);
+      }
+      if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        goToPage(currentIndex + 1);
+      }
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (visible && visible.intersectionRatio >= 0.55) {
+        updateGallery(slides.indexOf(visible.target));
+      }
+    }, { root: viewport, threshold: [0.55, 0.75, 0.95] });
+    slides.forEach((slide) => observer.observe(slide));
+
+    const lightbox = document.getElementById('report-lightbox');
+    const lightboxImage = document.getElementById('lightbox-image');
+    const lightboxCount = document.getElementById('lightbox-count');
+    const lightboxPrev = document.getElementById('lightbox-prev');
+    const lightboxNext = document.getElementById('lightbox-next');
+    const lightboxClose = document.getElementById('lightbox-close');
+    let lightboxIndex = 0;
+
+    const updateLightbox = (index) => {
+      lightboxIndex = Math.max(0, Math.min(totalPages - 1, index));
+      const page = lightboxIndex + 1;
+      lightboxImage.src = assetPath(page);
+      lightboxImage.alt = `반경 너머, 도달 가능성으로 연구보고서 ${page}쪽 크게 보기`;
+      applyPageCrop(lightbox, page);
+      lightboxCount.textContent = `${page} / ${totalPages}`;
+      lightboxPrev.disabled = lightboxIndex === 0;
+      lightboxNext.disabled = lightboxIndex === totalPages - 1;
+    };
+
+    const openLightbox = (index) => {
+      updateLightbox(index);
+      if (typeof lightbox.showModal === 'function') {
+        lightbox.showModal();
+      }
+    };
+
+    slides.forEach((slide, index) => {
+      slide.querySelector('.research-image-button').addEventListener('click', () => openLightbox(index));
+    });
+    lightboxPrev.addEventListener('click', () => updateLightbox(lightboxIndex - 1));
+    lightboxNext.addEventListener('click', () => updateLightbox(lightboxIndex + 1));
+    lightboxClose.addEventListener('click', () => lightbox.close());
+    lightbox.addEventListener('click', (event) => {
+      if (event.target === lightbox) lightbox.close();
+    });
+    lightbox.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        updateLightbox(lightboxIndex - 1);
+      }
+      if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        updateLightbox(lightboxIndex + 1);
+      }
+    });
+
+    updateGallery(0);
+    updateLightbox(0);
+  })();
+</script>
 </body>
 </html>
