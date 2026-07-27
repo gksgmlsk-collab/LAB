@@ -223,7 +223,7 @@
     min-height:48px;display:inline-flex;align-items:center;justify-content:center;
     gap:9px;border:1px solid var(--navy);border-radius:7px;padding:10px 13px;
     color:var(--navy);background:#fff;text-decoration:none;font-weight:700;
-    text-align:center;
+    text-align:center;font:inherit;font-weight:700;cursor:pointer;appearance:none;
   }
   .research-action.primary{background:var(--navy);color:#fff}
   .research-action .action-icon{
@@ -237,7 +237,8 @@
   .lightbox-close:focus-visible{
     outline:3px solid #D9B85F;outline-offset:3px;
   }
-  .research-video{margin-top:24px;scroll-margin-top:20px}
+    .research-video{margin-top:24px;scroll-margin-top:20px}
+    .research-video[hidden]{display:none}
   .research-video-heading{
     display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;
     margin-bottom:10px;
@@ -255,9 +256,10 @@
   .research-video video{
     display:block;width:100%;max-height:min(72vh,720px);background:#000;
   }
-  .research-gallery{
-    margin-top:24px;
-  }
+    .research-gallery{
+      margin-top:24px;scroll-margin-top:20px;
+    }
+    .research-gallery[hidden]{display:none}
   .gallery-toolbar{
     min-height:52px;display:flex;align-items:center;justify-content:space-between;
     gap:16px;padding:0 2px 10px;
@@ -498,7 +500,7 @@
     </div>
   </details>
 
-  <details class="report-group research-report" id="research-report">
+      <details class="report-group research-report" id="research-report" open>
     <summary id="research-report-heading">
       <span class="report-group-title">수상작 연구보고서</span>
       <span class="report-group-state" aria-hidden="true">펼치기</span>
@@ -509,21 +511,21 @@
     <p class="research-meta">총 29쪽 · 문제 정의부터 미래 수요 예측, AI 후보지 추천, 정책 적용 및 검증 부록까지</p>
 
     <div class="research-actions">
-      <a class="research-action primary" href="#research-gallery">
+              <button class="research-action primary" type="button" id="research-preview-open" aria-controls="research-gallery" aria-expanded="true">
         <span class="action-icon" aria-hidden="true">VIEW</span>
         <span>연구보고서 미리보기</span>
-      </a>
-      <a class="research-action" href="assets/bangyeong-research/bangyeong-research-report.pdf" target="_blank" rel="noopener">
-        <span class="action-icon" aria-hidden="true">PDF</span>
-        <span>PDF 원문 보기</span>
-      </a>
-      <a class="research-action" href="#research-video">
+      </button>
+      <button class="research-action" type="button" id="research-video-toggle" aria-controls="research-video" aria-expanded="false">
         <span class="action-icon" aria-hidden="true">VIDEO</span>
-        <span>발표 영상 보기</span>
+        <span class="research-video-label">발표 영상 보기</span>
+      </button>
+      <a class="research-action" href="assets/bangyeong-research/bangyeong-research-report.pdf" download>
+        <span class="action-icon" aria-hidden="true">PDF</span>
+        <span>PDF 원문 다운로드</span>
       </a>
     </div>
 
-    <section class="research-video" id="research-video" aria-labelledby="research-video-title">
+    <section class="research-video" id="research-video" aria-labelledby="research-video-title" hidden>
       <div class="research-video-heading">
         <span class="research-video-kicker">수상작 발표 영상</span>
         <h4 id="research-video-title">제8회 교육 공공데이터 AI 활용대회 DATA ROCK팀 PT 발표</h4>
@@ -536,7 +538,7 @@
       </div>
     </section>
 
-    <div class="research-gallery" id="research-gallery">
+            <div class="research-gallery" id="research-gallery">
       <div class="gallery-toolbar">
         <div class="gallery-label">연구보고서 미리보기</div>
         <div class="gallery-nav" aria-label="연구보고서 페이지 이동">
@@ -630,6 +632,76 @@
 
     window.addEventListener('hashchange', revealHash);
     revealHash();
+
+    const researchGroup = document.getElementById('research-report');
+    const researchPreview = document.getElementById('research-preview-open');
+    const researchGallery = document.getElementById('research-gallery');
+    const researchVideoToggle = document.getElementById('research-video-toggle');
+    const researchVideo = document.getElementById('research-video');
+    const researchVideoPlayer = researchVideo?.querySelector('video');
+    const researchVideoLabel = researchVideoToggle?.querySelector('.research-video-label');
+
+    if (
+      researchGroup &&
+      researchPreview &&
+      researchGallery &&
+      researchVideoToggle &&
+      researchVideo &&
+      researchVideoPlayer &&
+      researchVideoLabel
+    ) {
+      const scrollToResearchTarget = (target) => {
+        researchGroup.open = true;
+        requestAnimationFrame(() => {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      };
+
+      const closeResearchVideo = () => {
+        researchVideo.hidden = true;
+        researchVideoToggle.setAttribute('aria-expanded', 'false');
+        researchVideoLabel.textContent = '발표 영상 보기';
+        researchVideoPlayer.pause();
+      };
+
+      const closeResearchPreview = () => {
+        researchGallery.hidden = true;
+        researchPreview.setAttribute('aria-expanded', 'false');
+      };
+
+      const openResearchPreview = () => {
+        researchGallery.hidden = false;
+        researchPreview.setAttribute('aria-expanded', 'true');
+      };
+
+      researchPreview.addEventListener('click', () => {
+        closeResearchVideo();
+        openResearchPreview();
+        scrollToResearchTarget(researchGallery);
+      });
+
+      researchVideoToggle.addEventListener('click', () => {
+        if (!researchVideo.hidden) {
+          closeResearchVideo();
+          openResearchPreview();
+          scrollToResearchTarget(researchGallery);
+          return;
+        }
+
+        closeResearchPreview();
+        researchVideo.hidden = false;
+        researchVideoToggle.setAttribute('aria-expanded', 'true');
+        researchVideoLabel.textContent = '발표 영상 닫기';
+        scrollToResearchTarget(researchVideo);
+      });
+
+      researchGroup.addEventListener('toggle', () => {
+        if (!researchGroup.open) {
+          closeResearchVideo();
+          openResearchPreview();
+        }
+      });
+    }
 
     const totalPages = 29;
     const assetPath = (page) =>
