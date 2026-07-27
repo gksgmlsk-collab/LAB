@@ -13,6 +13,7 @@
     "학교 적용": "stage-school",
     "지속 개선": "stage-improve",
     "학교 적용+지속 개선": "stage-active",
+    "학교 적용+교육청 확산": "stage-spread",
     "내부 테스트": "stage-test",
     "내부테스트": "stage-test",
     "데모": "stage-demo",
@@ -28,12 +29,13 @@
     `<span class="stage-badge ${stageClassMap[stage] || "stage-idea"}">${escapeHtml(stage)}</span>`
   );
   const stageOrder = {
-    "학교 적용+지속 개선": 0,
-    "데모": 1,
-    "내부테스트": 2,
-    "내부 테스트": 2,
-    "아이디어": 3,
-    "보류": 4,
+    "학교 적용+교육청 확산": 0,
+    "학교 적용+지속 개선": 1,
+    "데모": 2,
+    "내부테스트": 3,
+    "내부 테스트": 3,
+    "아이디어": 4,
+    "보류": 5,
   };
 
   function actionMarkup(action, fallbackLabel) {
@@ -50,6 +52,7 @@
       const imageClassMap = {
         portrait: "is-portrait",
         contain: "is-contain",
+        banner: "is-banner",
       };
       const imageClass = imageClassMap[project.imageDisplay]
         ? ` class="${imageClassMap[project.imageDisplay]}"`
@@ -124,12 +127,12 @@
   `;
 
   const projects = data.projects;
-  const featuredIds = ["draconis", "seokam-on", "dolflix"];
+  const featuredIds = ["draconis", "dolsoe", "seokam-on", "dolflix"];
   byId("lab-feature-list").innerHTML = featuredIds
     .map((id) => projects.find((project) => project.id === id))
     .filter(Boolean)
     .map((project) => `
-      <section class="lab-feature-card${project.id === "draconis" ? " is-primary" : ""}${project.hideMedia ? " has-no-media" : ""}" data-project-id="${escapeHtml(project.id)}" aria-label="${escapeHtml(project.name)} 대표 서비스">
+      <section class="lab-feature-card${project.id === "draconis" ? " is-primary" : ""}${project.featureWide ? " is-wide" : ""}${project.hideMedia ? " has-no-media" : ""}" data-project-id="${escapeHtml(project.id)}" aria-label="${escapeHtml(project.name)} 대표 서비스">
         ${mediaMarkup(project)}
         <div class="lab-feature-body">
           <div class="lab-card-head">
@@ -229,7 +232,7 @@
           </div>
           <div class="lab-gallery-dialog-stage">
             <button type="button" class="lab-gallery-icon lab-gallery-prev" data-gallery-prev aria-label="이전 이미지" title="이전 이미지">←</button>
-            <img id="lab-gallery-dialog-image" src="" alt="">
+            <img id="lab-gallery-dialog-image" alt="">
             <button type="button" class="lab-gallery-icon lab-gallery-next" data-gallery-next aria-label="다음 이미지" title="다음 이미지">→</button>
           </div>
           <div class="lab-gallery-dialog-caption" id="lab-gallery-dialog-caption"></div>
@@ -342,4 +345,22 @@
       </div>
     </section>
   `;
+
+  function openHashSection() {
+    const sectionId = window.location.hash.slice(1);
+    if (!sectionId) return;
+    const section = byId(sectionId);
+    const disclosure = section?.querySelector(".lab-disclosure");
+    if (disclosure) disclosure.open = true;
+  }
+
+  document.querySelector(".lab-page-nav")?.addEventListener("click", (event) => {
+    const link = event.target.closest('a[href^="#"]');
+    if (!link) return;
+    const section = document.querySelector(link.getAttribute("href"));
+    const disclosure = section?.querySelector(".lab-disclosure");
+    if (disclosure) disclosure.open = true;
+  });
+  window.addEventListener("hashchange", openHashSection);
+  openHashSection();
 })();

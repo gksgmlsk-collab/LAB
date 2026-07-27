@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>돌 AI 연구소 — 인천석암초등학교</title>
+<title>석암초 돌AI연구소 — 인천석암초등학교</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600;700&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -90,7 +90,27 @@
     outline:2px solid var(--steel);outline-offset:2px;
   }
 
-  .lab-section{margin-top:34px}
+  .lab-section{margin-top:14px}
+  .lab-section:has(.lab-disclosure[open]){margin-top:34px}
+  .lab-disclosure{margin:0}
+  .lab-section-summary{
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+    padding:0 2px 9px;border-bottom:1px solid var(--line);
+    color:var(--navy);cursor:pointer;list-style:none;
+  }
+  .lab-section-summary::-webkit-details-marker{display:none}
+  .lab-section-summary::after{
+    content:"펼치기 +";flex:0 0 auto;margin-right:4px;
+    color:var(--steel);font-size:12.5px;font-weight:700;white-space:nowrap;
+  }
+  .lab-disclosure[open] > .lab-section-summary{margin-bottom:14px}
+  .lab-disclosure[open] > .lab-section-summary::after{content:"접기 -";color:var(--navy)}
+  .lab-section-summary:focus-visible{outline:2px solid var(--steel);outline-offset:4px}
+  .lab-section-heading{
+    font-family:'Noto Serif KR',serif;font-size:18px;font-weight:700;
+    color:var(--navy);line-height:1.42;word-break:keep-all;
+  }
+  .lab-section-heading .no{color:var(--gold);margin-right:8px}
   .lab-section h2{
     font-family:'Noto Serif KR',serif;font-size:18px;font-weight:700;
     color:var(--navy);padding-bottom:9px;margin-bottom:14px;
@@ -202,6 +222,7 @@
   .stage-school{background:var(--blue)}
   .stage-improve{background:var(--green)}
   .stage-active{background:#276C6B}
+  .stage-spread{background:#1E6E59}
   .stage-test{background:var(--amber)}
   .stage-demo{background:var(--violet)}
   .stage-idea{background:var(--muted)}
@@ -244,7 +265,10 @@
     aspect-ratio:auto;object-fit:contain;background:#07101B;
   }
   .lab-feature-media > img.is-contain{object-fit:contain;background:#F5F7F9}
-  .lab-feature-list .lab-feature-card:not(.is-primary) .lab-feature-media > img{
+  .lab-feature-media > img.is-banner{
+    aspect-ratio:1492/390;object-fit:cover;background:#F2EFE6;opacity:.92;
+  }
+  .lab-feature-list .lab-feature-card:not(.is-primary):not(.is-wide) .lab-feature-media > img{
     aspect-ratio:16/7;object-position:50% 50%;
   }
   .lab-feature-media-title{
@@ -448,7 +472,11 @@
     .lab-header-mascot{flex-basis:146px;width:146px;height:166px}
     .lab-page-nav{gap:10px;margin:20px 0 48px}
     .lab-page-nav a{padding:9px 14px;font-size:13.5px}
-    .lab-section{margin-top:56px}
+    .lab-section{margin-top:18px}
+    .lab-section:has(.lab-disclosure[open]){margin-top:56px}
+    .lab-intro-heading{margin-top:0}
+    .lab-section-heading{font-size:24px}
+    .lab-disclosure[open] > .lab-section-summary{margin-bottom:22px}
     .lab-section h2{font-size:24px;margin-bottom:22px}
     .lab-title{font-size:30px}
     #lab-intro-content > .lab-lead{max-width:800px;font-size:15.5px}
@@ -460,6 +488,10 @@
       grid-column:1 / -1;display:grid;
       grid-template-columns:minmax(280px,.72fr) minmax(0,1.55fr);
     }
+    .lab-feature-card.is-wide{grid-column:1 / -1}
+    .lab-feature-card.is-wide .lab-feature-body{padding:22px 24px}
+    .lab-feature-card.is-wide .lab-feature-body h3{font-size:21px}
+    .lab-feature-card.is-wide .lab-feature-body p{font-size:14.5px;line-height:1.76}
     .lab-feature-card.is-primary .lab-media-placeholder{height:100%;min-height:100%}
     .lab-feature-card.is-primary .lab-feature-media{height:100%;min-height:100%}
     .lab-feature-card.is-primary .lab-feature-media > img.is-portrait{height:100%;min-height:100%}
@@ -523,17 +555,17 @@
     <a class="back-link" href="/" aria-label="수상 보고 목록으로 돌아가기">← 수상 보고 목록</a>
     <div class="lab-heading-lockup">
       <div class="lab-header-mascot">
-        <img src="./assets/dolbot-header.png" alt="돌 AI 연구소 마스코트 돌봇">
+        <img src="./assets/dolbot-header.png" alt="석암초 돌AI연구소 마스코트 돌봇">
       </div>
       <div class="lab-heading-copy">
-        <h1>돌 AI 연구소</h1>
+        <h1>석암초 돌AI연구소</h1>
         <p class="sub">학교의 문제를, AI로 해결합니다.</p>
       </div>
     </div>
   </header>
 
   <main>
-    <nav class="lab-nav lab-page-nav" aria-label="돌 AI 연구소 섹션 바로가기">
+    <nav class="lab-nav lab-page-nav" aria-label="석암초 돌AI연구소 섹션 바로가기">
       <a href="#lab-intro">연구소 소개</a>
       <a href="#lab-featured">대표 서비스</a>
       <a href="#lab-services">서비스 포트폴리오</a>
@@ -541,39 +573,59 @@
       <a href="#lab-organization">연구소 운영조직</a>
     </nav>
 
-    <article class="lab-report" aria-label="돌 AI 연구소 운영 및 서비스 보고">
+    <article class="lab-report" aria-label="석암초 돌AI연구소 운영 및 서비스 보고">
       <section id="lab-intro" class="lab-section lab-topline lab-intro-heading" aria-labelledby="lab-intro-title">
-        <h2 id="lab-intro-title"><span class="no">0</span>연구소 소개</h2>
-        <div class="lab-label" id="lab-intro-label"></div>
-        <div id="lab-intro-content"></div>
+        <details class="lab-disclosure">
+          <summary id="lab-intro-title" class="lab-section-summary">
+            <span class="lab-section-heading" role="heading" aria-level="2"><span class="no">0</span>연구소 소개</span>
+          </summary>
+          <div class="lab-label" id="lab-intro-label"></div>
+          <div id="lab-intro-content"></div>
+        </details>
       </section>
 
       <section id="lab-featured" class="lab-section" aria-labelledby="lab-featured-title">
-        <h2 id="lab-featured-title"><span class="no">1</span>대표 서비스</h2>
-        <div id="lab-feature-list" class="lab-feature-list"></div>
+        <details class="lab-disclosure">
+          <summary id="lab-featured-title" class="lab-section-summary">
+            <span class="lab-section-heading" role="heading" aria-level="2"><span class="no">1</span>대표 서비스</span>
+          </summary>
+          <div id="lab-feature-list" class="lab-feature-list"></div>
+        </details>
       </section>
 
       <section id="lab-services" class="lab-section" aria-labelledby="lab-services-title">
-        <h2 id="lab-services-title"><span class="no">2</span>서비스 포트폴리오</h2>
-        <div id="lab-services-lead"></div>
-        <div id="filter-bar" class="filter-bar" aria-label="서비스 카테고리 필터"></div>
-        <div id="lab-project-grid" class="lab-project-grid" aria-live="polite"></div>
+        <details class="lab-disclosure">
+          <summary id="lab-services-title" class="lab-section-summary">
+            <span class="lab-section-heading" role="heading" aria-level="2"><span class="no">2</span>서비스 포트폴리오</span>
+          </summary>
+          <div id="lab-services-lead"></div>
+          <div id="filter-bar" class="filter-bar" aria-label="서비스 카테고리 필터"></div>
+          <div id="lab-project-grid" class="lab-project-grid" aria-live="polite"></div>
+        </details>
       </section>
 
       <section id="lab-future" class="lab-section" aria-labelledby="lab-future-title">
-        <h2 id="lab-future-title"><span class="no">3</span>향후 발전 방향</h2>
-        <div id="lab-roadmap-content"></div>
+        <details class="lab-disclosure">
+          <summary id="lab-future-title" class="lab-section-summary">
+            <span class="lab-section-heading" role="heading" aria-level="2"><span class="no">3</span>향후 발전 방향</span>
+          </summary>
+          <div id="lab-roadmap-content"></div>
+        </details>
       </section>
 
       <section id="lab-organization" class="lab-section" aria-labelledby="lab-org-title">
-        <h2 id="lab-org-title"><span class="no">4</span>연구소 운영조직</h2>
-        <div id="lab-org-list" class="lab-org-list"></div>
+        <details class="lab-disclosure">
+          <summary id="lab-org-title" class="lab-section-summary">
+            <span class="lab-section-heading" role="heading" aria-level="2"><span class="no">4</span>연구소 운영조직</span>
+          </summary>
+          <div id="lab-org-list" class="lab-org-list"></div>
+        </details>
       </section>
     </article>
   </main>
 
   <footer>
-    인천석암초등학교 돌AI연구소 — 인천광역시교육청 읽걷쓰AI 현장 구현 사례
+    석암초 돌AI연구소 — 인천광역시교육청 읽걷쓰AI 현장 구현 사례
   </footer>
 
 </div>
