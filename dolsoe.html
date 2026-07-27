@@ -92,6 +92,124 @@
   .badge-first .mk{color:var(--seal);font-weight:700;flex:0 0 auto}
   .badge-first b{color:var(--seal)}
 
+  .report-section-nav{
+    display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:10px;margin-top:24px;
+  }
+  .report-section-link{
+    min-height:50px;display:flex;align-items:center;justify-content:center;
+    border:1px solid var(--line);border-radius:7px;background:#fff;
+    color:var(--navy);font-weight:700;text-decoration:none;text-align:center;
+    padding:10px 12px;
+  }
+  .report-section-link::before,
+  .report-group-title::before{
+    content:"▣";flex:0 0 auto;margin-right:8px;color:var(--gold);font-size:.82em;
+  }
+  .report-section-link:focus-visible,
+  .report-group > summary:focus-visible,
+  .research-action:focus-visible,
+  .gallery-nav:focus-visible,
+  .research-image-button:focus-visible,
+  .lightbox button:focus-visible{
+    outline:2px solid var(--steel);outline-offset:2px;
+  }
+  .report-group{
+    margin-top:34px;border-top:3px solid var(--navy);
+    scroll-margin-top:20px;
+  }
+  .report-group > summary{
+    list-style:none;cursor:pointer;display:flex;align-items:center;
+    justify-content:space-between;gap:16px;min-height:62px;
+    padding:14px 2px 12px;border-bottom:1px solid var(--line);
+    font-family:'Noto Serif KR',serif;font-size:22px;font-weight:700;color:var(--navy);
+  }
+  .report-group > summary::-webkit-details-marker{display:none}
+  .report-group-title{display:flex;align-items:center}
+  .report-group-state::after{
+    content:"+";width:28px;height:28px;border:1px solid var(--line);
+    border-radius:50%;display:grid;place-items:center;
+    font-family:'IBM Plex Sans KR',sans-serif;font-size:18px;line-height:1;
+    color:var(--steel);background:#fff;
+  }
+  .report-group[open] > summary .report-group-state::after{content:"−"}
+  .report-group-body{padding-top:2px}
+  .report-group-body > section:first-child{margin-top:24px}
+  .research-report{margin-top:34px;border-top-width:1px}
+  .research-report .report-group-body{padding-top:24px}
+  .research-intro{margin-top:0}
+  .research-kicker{
+    font-size:12px;font-weight:700;letter-spacing:.12em;color:var(--gold);
+  }
+  .research-title{
+    border:0;padding:0;margin:8px 0 14px;font-size:23px;line-height:1.45;
+  }
+  .research-desc{color:#293842;word-break:keep-all}
+  .research-meta{
+    margin-top:12px;color:var(--navy);font-weight:700;word-break:keep-all;
+  }
+  .research-actions{
+    display:grid;grid-template-columns:1fr;gap:8px;margin-top:18px;
+  }
+  .research-action{
+    min-height:46px;display:flex;align-items:center;justify-content:center;
+    border:1px solid var(--navy);border-radius:7px;background:#fff;
+    color:var(--navy);font:inherit;font-weight:700;text-decoration:none;
+    cursor:pointer;padding:10px 14px;
+  }
+  .research-action.primary{background:var(--navy);color:#fff}
+  .research-gallery{margin-top:24px;scroll-margin-top:20px}
+  .gallery-toolbar{
+    display:flex;align-items:center;gap:10px;margin-bottom:10px;color:var(--navy);
+  }
+  .gallery-toolbar strong{margin-right:auto}
+  .gallery-toolbar span{font-size:12px;color:var(--sub);font-weight:700}
+  .gallery-controls{display:flex;gap:6px}
+  .gallery-nav{
+    width:38px;height:38px;border:1px solid var(--line);border-radius:6px;
+    background:#fff;color:var(--navy);font-size:18px;cursor:pointer;
+  }
+  .research-gallery-viewport{
+    width:100%;overflow-x:auto;scroll-snap-type:x mandatory;
+    scrollbar-width:thin;overscroll-behavior-inline:contain;
+  }
+  .research-gallery-track{display:flex;align-items:flex-start;gap:14px}
+  .research-slide{
+    flex:0 0 100%;scroll-snap-align:start;scroll-snap-stop:always;
+  }
+  .research-image-button{
+    width:100%;aspect-ratio:16/9;border:1px solid var(--line);
+    border-radius:6px;overflow:hidden;background:#111827;
+    cursor:zoom-in;display:block;padding:0;
+  }
+  .research-slide img{width:100%;height:100%;object-fit:contain;display:block}
+  .research-slide figcaption{
+    margin-top:7px;text-align:center;font-size:12px;color:var(--sub);
+  }
+  .lightbox{
+    position:fixed;inset:0;z-index:1000;display:none;
+    align-items:center;justify-content:center;background:rgba(10,18,25,.92);
+    padding:64px 18px 18px;
+  }
+  .lightbox.open{display:flex}
+  .lightbox-image{
+    max-width:min(1200px,calc(100vw - 36px));
+    max-height:calc(100vh - 90px);object-fit:contain;
+  }
+  .lightbox-close,.lightbox-arrow{
+    position:absolute;border:1px solid rgba(255,255,255,.35);
+    background:rgba(0,0,0,.3);color:#fff;cursor:pointer;border-radius:6px;
+  }
+  .lightbox-close{
+    top:16px;right:18px;width:42px;height:42px;font-size:24px;
+  }
+  .lightbox-arrow{
+    top:50%;transform:translateY(-50%);
+    width:44px;height:54px;font-size:26px;
+  }
+  .lightbox-prev{left:18px}
+  .lightbox-next{right:18px}
+
   section{margin-top:30px}
   h2{
     font-family:'Noto Serif KR',serif;font-size:18px;font-weight:700;
@@ -161,6 +279,14 @@
     .meta .v{min-width:0}
     .core{padding:26px 28px}
     .core p{font-size:16px}
+    .report-section-nav{margin-top:30px;gap:14px}
+    .report-section-link{min-height:56px;font-size:16px}
+    .report-group{margin-top:48px}
+    .report-group > summary{font-size:27px;min-height:72px}
+    .research-title{font-size:28px}
+    .research-desc{font-size:16px}
+    .research-actions{display:flex}
+    .research-action{min-width:190px}
     section{margin-top:42px}
     h2{font-size:22px}
     p.body{font-size:16px;line-height:1.75}
@@ -207,6 +333,17 @@
     <span><b>현직 학교장이 출품하여 최우수상을 수상한 것은 이번이 처음</b>이며, 수상작은 제14회 범정부 창업경진대회 통합본선에도 추천되었습니다.</span>
   </div>
 
+  <nav class="report-section-nav" aria-label="수상작 보고 섹션">
+    <a class="report-section-link" href="#award-overview">수상작 개요</a>
+    <a class="report-section-link" href="#research-report">수상작 연구보고서</a>
+  </nav>
+
+  <details class="report-group report-overview" id="award-overview">
+    <summary>
+      <span class="report-group-title">수상작 개요</span>
+      <span class="report-group-state" aria-hidden="true"></span>
+    </summary>
+    <div class="report-group-body">
   <section>
     <h2><span class="no">1</span>개발 배경</h2>
     <p class="body">국·공립 초등학교는 학교폭력 예방·안전교육·학교보건·급식·개인정보 보호 등 <b>연간 수십 건의 사업계획</b>을 수립하며, 각 계획은 관련 법령의 의무사항을 반드시 반영해야 합니다.</p>
@@ -262,6 +399,41 @@
       <li><span class="when">하반기</span> 관내 확산 방안 수립 후 별도 보고 예정</li>
     </ul>
   </section>
+    </div>
+  </details>
+
+  <details class="report-group research-report" id="research-report" open>
+    <summary>
+      <span class="report-group-title">수상작 연구보고서</span>
+      <span class="report-group-state" aria-hidden="true"></span>
+    </summary>
+    <div class="report-group-body">
+      <article class="research-intro">
+        <p class="research-kicker">수상작 AI 서비스</p>
+        <h2 class="research-title">학교 사업계획 법령 검토 비서 「돌쇠」</h2>
+        <p class="research-desc">학교 사업계획서를 업로드하면 AI가 관련 법령을 자동으로 분류하고, 국가법령정보센터와 인천광역시교육청 법무도우미 자료를 대조하여 준수·누락·위반 여부와 수정 권고를 제공하는 AI 법령 검토 서비스입니다.</p>
+        <p class="research-meta">약 400개 법령 · 10개 분야 · 계획서 분석부터 근거 법령과 검토 보고서 제공까지</p>
+        <div class="research-actions">
+          <button type="button" class="research-action primary" id="preview-button">소개서 미리보기</button>
+          <a class="research-action" href="./assets/dolsoe-research/dolsoe-presentation.ppsx" download>소개서 ppsx 다운로드</a>
+        </div>
+      </article>
+
+      <div class="research-gallery" id="research-gallery">
+        <div class="gallery-toolbar">
+          <strong>소개서 미리보기</strong>
+          <span id="gallery-counter">1 / 24</span>
+          <div class="gallery-controls">
+            <button type="button" class="gallery-nav" id="gallery-prev" aria-label="이전 소개서 페이지">←</button>
+            <button type="button" class="gallery-nav" id="gallery-next" aria-label="다음 소개서 페이지">→</button>
+          </div>
+        </div>
+        <div class="research-gallery-viewport" id="gallery-viewport" tabindex="0">
+          <div class="research-gallery-track" id="gallery-track"></div>
+        </div>
+      </div>
+    </div>
+  </details>
 
   <footer>
     「제2회 법령데이터 활용 아이디어 공모전」 법제처 주최 · 활용 데이터 law.go.kr / law.ice.go.kr<br>
@@ -269,5 +441,133 @@
   </footer>
 
 </div>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="소개서 확대 보기">
+  <button type="button" class="lightbox-close" id="lightbox-close" aria-label="확대 보기 닫기">×</button>
+  <button type="button" class="lightbox-arrow lightbox-prev" id="lightbox-prev" aria-label="이전 페이지">‹</button>
+  <img class="lightbox-image" id="lightbox-image" alt="">
+  <button type="button" class="lightbox-arrow lightbox-next" id="lightbox-next" aria-label="다음 페이지">›</button>
+</div>
+
+<script>
+  (() => {
+    const pageCount = 24;
+    const track = document.getElementById("gallery-track");
+    const viewport = document.getElementById("gallery-viewport");
+    const counter = document.getElementById("gallery-counter");
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImage = document.getElementById("lightbox-image");
+    let currentIndex = 0;
+
+    const pageSrc = (index) =>
+      `./assets/dolsoe-research/dolsoe-page-${String(index + 1).padStart(2, "0")}.png`;
+
+    const updateCounter = (index) => {
+      currentIndex = Math.max(0, Math.min(pageCount - 1, index));
+      counter.textContent = `${currentIndex + 1} / ${pageCount}`;
+    };
+
+    const goTo = (index, behavior = "smooth") => {
+      const next = Math.max(0, Math.min(pageCount - 1, index));
+      const slide = track.children[next];
+      viewport.scrollTo({ left: slide.offsetLeft, behavior });
+      updateCounter(next);
+    };
+
+    const openLightbox = (index) => {
+      updateCounter(index);
+      lightboxImage.src = pageSrc(currentIndex);
+      lightboxImage.alt = `돌쇠 소개서 ${currentIndex + 1}쪽 확대 보기`;
+      lightbox.classList.add("open");
+      document.body.style.overflow = "hidden";
+    };
+
+    const closeLightbox = () => {
+      lightbox.classList.remove("open");
+      document.body.style.overflow = "";
+    };
+
+    const shiftLightbox = (delta) => {
+      updateCounter((currentIndex + delta + pageCount) % pageCount);
+      lightboxImage.src = pageSrc(currentIndex);
+      lightboxImage.alt = `돌쇠 소개서 ${currentIndex + 1}쪽 확대 보기`;
+      goTo(currentIndex, "auto");
+    };
+
+    for (let index = 0; index < pageCount; index += 1) {
+      const figure = document.createElement("figure");
+      figure.className = "research-slide";
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "research-image-button";
+      button.setAttribute("aria-label", `돌쇠 소개서 ${index + 1}쪽 확대 보기`);
+      const image = document.createElement("img");
+      image.src = pageSrc(index);
+      image.alt = `돌쇠 소개서 ${index + 1}쪽`;
+      image.loading = index === 0 ? "eager" : "lazy";
+      image.decoding = "async";
+      button.addEventListener("click", () => openLightbox(index));
+      button.append(image);
+      const caption = document.createElement("figcaption");
+      caption.textContent = `${index + 1} / ${pageCount}`;
+      figure.append(button, caption);
+      track.append(figure);
+    }
+
+    const slides = [...track.children];
+    let scrollFrame;
+    viewport.addEventListener("scroll", () => {
+      cancelAnimationFrame(scrollFrame);
+      scrollFrame = requestAnimationFrame(() => {
+        const left = viewport.scrollLeft;
+        let nearest = 0;
+        let distance = Number.POSITIVE_INFINITY;
+        slides.forEach((slide, index) => {
+          const nextDistance = Math.abs(slide.offsetLeft - left);
+          if (nextDistance < distance) {
+            nearest = index;
+            distance = nextDistance;
+          }
+        });
+        updateCounter(nearest);
+      });
+    });
+
+    document.getElementById("gallery-prev").addEventListener("click", () => goTo(currentIndex - 1));
+    document.getElementById("gallery-next").addEventListener("click", () => goTo(currentIndex + 1));
+    document.getElementById("lightbox-prev").addEventListener("click", () => shiftLightbox(-1));
+    document.getElementById("lightbox-next").addEventListener("click", () => shiftLightbox(1));
+    document.getElementById("lightbox-close").addEventListener("click", closeLightbox);
+    lightbox.addEventListener("click", (event) => {
+      if (event.target === lightbox) closeLightbox();
+    });
+
+    document.getElementById("preview-button").addEventListener("click", () => {
+      const report = document.getElementById("research-report");
+      report.open = true;
+      document.getElementById("research-gallery").scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+
+    document.querySelectorAll(".report-section-link").forEach((link) => {
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        const target = document.querySelector(link.getAttribute("href"));
+        target.open = true;
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+
+    viewport.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowLeft") goTo(currentIndex - 1);
+      if (event.key === "ArrowRight") goTo(currentIndex + 1);
+    });
+    document.addEventListener("keydown", (event) => {
+      if (!lightbox.classList.contains("open")) return;
+      if (event.key === "Escape") closeLightbox();
+      if (event.key === "ArrowLeft") shiftLightbox(-1);
+      if (event.key === "ArrowRight") shiftLightbox(1);
+    });
+  })();
+</script>
 </body>
 </html>
