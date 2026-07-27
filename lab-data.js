@@ -341,8 +341,10 @@ window.labData = {
       reportPoint: "학교 사업계획과 최신 법령을 연결하여 교직원의 법령 검토 부담을 줄이는 AI 행정 지원 시스템",
       detailTitle: "AI 법령 검토 비서 돌쇠",
       detailBody: "돌쇠는 학교 사업계획서를 업로드하면 관련 법령을 자동으로 찾아 계획의 준수 여부와 누락 사항을 검토하고, 근거 법령과 수정 권고를 제공하는 AI 기반 법령 검토 시스템입니다.\n\n학교폭력 예방, 안전교육, 학교보건, 급식, 개인정보 보호 등 학교에서 수립하는 다양한 사업계획을 분석하여 관련 법령 분야를 분류하고, 국가법령정보센터와 인천광역시교육청 법무도우미 자료를 바탕으로 준수·누락·위반 여부를 판정합니다.\n\n약 400개의 초등학교 관련 법령을 10개 분야로 체계화하였으며, 법률 전문가가 없는 학교에서도 결재 전에 법령 위반 가능성을 확인할 수 있도록 설계되었습니다. 검토 결과는 근거 법령과 개선 의견이 포함된 보고서 형태로 제공되어 감사 대응과 검토 이력 관리에도 활용할 수 있습니다.\n\n돌쇠는 법제처 주최 「제2회 법령데이터 활용 아이디어 공모전」 제품·서비스 개발 부문에서 전국 최우수상인 법제처장상을 수상하였으며, 제14회 범정부 창업경진대회 통합본선 추천작으로 선정되었습니다.",
-      actions: [],
-      url: null,
+      actions: [
+        { label: "서비스 체험", url: "https://schoollaw-review-production.up.railway.app/web/" }
+      ],
+      url: "https://schoollaw-review-production.up.railway.app/web/",
       image: "./assets/dolsoe-review.png",
       imageDisplay: "banner",
       featureWide: true,
