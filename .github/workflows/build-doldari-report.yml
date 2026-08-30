@@ -31,6 +31,19 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install python-hwpx lxml
 
+      - name: Apply generator compatibility patch
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('chatgpt_artifacts/doldari/generate_report.py')
+          text = path.read_text(encoding='utf-8')
+          text = text.replace(
+              'def body(doc, section, text):\n    return add_run_paragraph(doc, section, text)',
+              'def body(doc, section, text, *, bold=False):\n    return add_run_paragraph(doc, section, text, bold=bold)'
+          )
+          path.write_text(text, encoding='utf-8')
+          PY
+
       - name: Generate HWPX report
         run: python chatgpt_artifacts/doldari/generate_report.py
 
