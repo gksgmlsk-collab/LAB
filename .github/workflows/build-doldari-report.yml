@@ -1,0 +1,46 @@
+name: Build DOL-DARI report
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'chatgpt_artifacts/doldari/**'
+      - '.github/workflows/build-doldari-report.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUTF8: '1'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install HWPX tooling
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install python-hwpx lxml
+
+      - name: Generate HWPX report
+        run: python chatgpt_artifacts/doldari/generate_report.py
+
+      - name: List generated files
+        run: find chatgpt_artifacts/doldari/output -maxdepth 1 -type f -printf '%f\n'
+
+      - name: Upload report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: doldari-app-screenshot-revision
+          path: chatgpt_artifacts/doldari/output/*
+          if-no-files-found: error
+          retention-days: 7
