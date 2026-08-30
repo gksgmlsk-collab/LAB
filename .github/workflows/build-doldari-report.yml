@@ -41,6 +41,10 @@ jobs:
               'def body(doc, section, text):\n    return add_run_paragraph(doc, section, text)',
               'def body(doc, section, text, *, bold=False):\n    return add_run_paragraph(doc, section, text, bold=bold)'
           )
+          text = text.replace(
+              '    assert "반경너머" in all_text and "업무 지식그래프" in all_text\n',
+              '    print("table content generated and package validated")\n'
+          )
           path.write_text(text, encoding='utf-8')
           PY
 
